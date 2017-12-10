@@ -1,0 +1,30 @@
+<div class="counter b-line fr">
+    <div class="tit"><span><!-- 计算器 -->kalkulator pinjaman</span></div>
+    <div class="c-input"><!-- 借多少 -->
+        <input class="money" type="text" placeholder="jumlah pinjaman" id="suanmoney" maxlength="8" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
+        <span><!-- 元 -->Rp.</span>
+    </div>
+    <div class="c-input"><!-- 借多久 -->
+        <input class="yue" type="text" placeholder="jumlah waktu pinjaman" id="suanyue" maxlength="2" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
+        <span><!-- 个月 -->bulan</span>
+    </div>
+    <div class="c-input"><!-- 利率 -->
+        <input class="rate" type="text" placeholder="bunga" id="suanrate" maxlength="5" autocomplete="off" onkeyup="this.value = this.value.replace(/[^0-9.]/g, '')" />
+        <span>%</span>
+    </div>
+    <a href="javascript:void(0);">
+        <button class="submit-blue" id="JigouSuan"><!-- 算一算 -->menghitung</button>
+    </a>
+</div>
+<script type="text/javascript">
+    $('#JigouSuan').on('click', "", function() {
+        var money = $('#suanmoney').val();
+        var yue = $('#suanyue').val();
+        var rate = $('#suanrate').val();
+        if (money && yue && rate) {
+            window.location.href = "/calculate?par=" + money + "-" + yue + "-" + rate;
+        } else {
+            window.location.href = "/calculate/";
+        }
+    });
+</script>

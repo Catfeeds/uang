@@ -1,0 +1,75 @@
+﻿{include file="index@public/head"}
+<link rel="stylesheet" type="text/css" href="__CSS__/swiper.min.css">
+<script type="text/javascript" src="__JS__/swiper.min.js"></script>
+<!--头部-->
+{include file="index@news/top"}
+<div class="main jiekuan">
+    <div class="search-result">
+        <div class="cms-main fl">
+            <div class="cms-banner">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    {volist name="banners" id="vo"}
+                        <div class="swiper-slide item">
+                            <a href="/news/detail/{$vo.id}" target="_blank">
+                            <img src="{$vo.img}" alt="{$vo.title}">
+                            <span>{$vo.title}</span>
+                        </a>
+                        </div>
+                    {/volist}
+                    </div>
+                    <div class="swiper-pagination pagination"></div>
+                </div>
+            </div>
+            <div class="d-infomation">
+                <ul>
+                    {volist name="cates" id="cate"}
+                        <li>
+                            <div class="hd">
+                                <span class="tit fl">{$cate.name}</span>
+                                <a href="/news/{$cate.id}" class="fr f12 gray mt10" sss=''><!-- 更多 -->lebih banyak>></a>
+                            </div>
+                            <div class="bd">
+                                <a href="/news/detail/{$cate.mainnews.id}" target="_blank">
+                                    <div class="bd-img fl">
+                                        <img src="{$cate.mainnews.img}" />
+                                        <div class="tit">{$cate.mainnews.title}</div>
+                                    </div>
+                                </a>
+                                {volist name="cate['news']" id="vo"}
+                                <ul>
+                                    <li><a href="/news/detail/{$vo.id}" target="_blank">{$vo.title}</a></li>
+                                </ul>
+                                {/volist}
+                            </div>
+                        </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        <div class="ad fr mt0">
+            <!-- 贷款产品搜索 -->
+            {include file="index@public/product_search"}
+            <!-- 贷款产品搜索 end -->
+            <div class="ad fr">
+                <!-- 相关产品 -->
+                {include file="index@public/related_products"}
+                <!-- 相关产品 end -->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script>
+var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: 8000,
+    autoplayDisableOnInteraction: false
+});
+</script>
+
+<div class="mask none"></div>
+{include file="index@public/foot"}

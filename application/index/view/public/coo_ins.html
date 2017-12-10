@@ -1,0 +1,12 @@
+<div class="hz-jigou b-line">
+    <div class="tit"><span><!-- 合作机构 -->Mitra</span></div>
+    {volist name="coo_ins" id="vo"}
+        <a href="/institution/{$vo.id}" target='_blank'>
+        <img src="{$vo.logo}" />
+        <div class="name-text">
+            <p>{$vo.name}</p>
+            <p class="gray f12">{$vo.title}</p>
+        </div>
+        </a>
+    {/volist}
+</div>

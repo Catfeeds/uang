@@ -1,0 +1,32 @@
+<div class="info index-layout">
+    <div class="hd">
+    	<span class="gray" onclick="window.location.href = '/detail/{{id}}'">
+    		<a class="fl f16 mr10" href="javascript:;">{{name}}</a>{{title}}<span class="tag"><!-- 新口子 -->Mitra baru</span></a>
+        </span>
+        <!-- 评论 -->
+        <span class="mes" onclick="window.location.href = '/detail/{{id}}?c=1'">
+            <span class="num">{{comments_count}}</span>
+        </span>
+    </div>
+    <div class="bd">
+        <div class="infor fl">
+            <div class="count red">{{money_max}}</div>
+            <div class="count-d gray"><!-- 最高借款额度(元) -->lini kredit tertinggi</div>
+        </div>
+        <div class="infor fl">
+            <div class="margin">
+                <div class="infor-m"><span class="gray"><!-- 借款期限 -->waktu jatuh tempo </span>{{time_limit}}</div>
+                <div class="infor-m"><span class="gray"><!-- 最低利率 -->bunga terendah </span>{{money_rate}}%</div>
+            </div>
+        </div>
+    </div>
+    <div class="fd"><span class="i-apply on "><i class="applied"></i><span class="blue f16" pro_id="{{id}}"  onclick="FirstClick(this);"><!-- 已申请？ -->disetujui？</span><span class="gray f16 none" pro_id="{{id}}" get_status="0" onclick="AfterClick(this);"><!-- 已申请过！ -->telah registrasi sebelumnya</span>
+        <div class="layout index-apply none"><img src="/static/mobile/i/plane.png" alt="" />
+            <p><!-- 确定已申请注册过 -->telah registrasi sebelumnya【<span>{{name}}</span>】？</p>
+            <button class="yes"><!-- 是，我注册过 -->Ya</button>
+            <button class="no"><!-- 不，我点错了 -->Tidak</button>
+        </div>
+        </span>
+        <button class="jiekuan-btn fr" onclick="Jiekuan('{{id}}');"><!-- 立即借款 -->pinjam uang</button>
+    </div>
+</div>

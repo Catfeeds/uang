@@ -1,0 +1,46 @@
+{include file="index@public/head"}
+<div class="main aboutus">
+    <div class="aboutus-detail">
+        <ul>
+            <li class="cur"><!-- 平台简介 -->deskripsi platform</li>
+            <li><!-- 联系我们 -->kontak kami</li>
+        </ul>
+        <div class="aboutus-right">
+            <div class="tit">
+                <!-- 关于我们 -->tentang kami
+                <span class="blue f14 ml10">ABOUT US</span>
+            </div>
+            <div class="detail-text">
+                <ul>
+                    <li>
+                        <p>Uangmart adalah platfrom profesional yang dapat membantu anda menemukan pinjaman dengan mudah dan aman.
+                            <br />【<!-- 平台特色 -->fitur】
+                            <br />· <!-- 推荐门槛最低、利率最、放款最快、催收最温柔的高性价比贷款产品，一键轻松借款 -->rekomendasi persyaratan rendah, bunga rendah, aplikasi meminjam uang tercepat, klik untuk meminjam；
+                            <br />· Uangmart, Pinjaman Uang；
+                            <br />· <!-- 成功贷款免息+返利 -->bebas bunga + cashback；
+                            <br />
+                        </p>
+                    </li>
+                    <li class="none">
+                        <!-- <div>新口子推送群：123456789
+                            <br />
+                        </div> -->
+                        <p><!-- 商务合作 -->kerjasama：123456789@huyang.com</p>
+                        <p><!-- 意见反馈 -->lapor：123456789@huyang.com
+                            <br />
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+$('.aboutus-detail>ul>li').click(function() {
+    $(this).addClass('cur').siblings().removeClass('cur');
+    var count = $(this).index();
+    $(this).parents('.main').find('.detail-text li').eq(count).removeClass('none').siblings().addClass('none');
+});
+</script>
+{include file="index@public/foot"}

@@ -1,0 +1,247 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main gs">
+    <div class="title"> <i class="back" onclick="window.location.href = '/'"></i> Uangmart </div>
+    
+    <div class="bd">
+        <div class="info pd0">
+            <div class="tit">
+            	<img src="{$info.logo}">
+                <div class="pt20">{$info.name}<span class="red fr mr10">{$info.money_rate}%</span></div>
+                <span class="gray fr mr15"><!-- 最低日利率 -->bunga harian</span>
+            </div>
+            <div class="jk-range clear">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><!-- 借款范围 -->jumlah pinjaman</th>
+                            <th><!-- 借款期限 -->waktu jatuh tempo</th>
+                            <!-- <th>最快放款</th> -->
+                        </tr>
+                        <tr>
+                            <td>{$info.money_limit} Rp.</td>
+                            <td>{$info.time_limit}</td>
+                            <!-- <td>10分钟</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="t-choose">
+            <div class="t-detail cur" chosetype="1"><!-- 借款详情 -->Detail</div>
+            <div class="t-comment" chosetype="2"><!-- 借款评论 -->ulasan(<span class="red">{$info.comments_count}</span>)</div>
+        </div>
+        <div class="t-details pb60">
+            <div class="info">
+                <div class="i-tit"><!-- 申请条件 -->terapkan persyaratan</div>
+                <p>{:htmlspecialchars_decode($info.requirement)}<br>
+                </p>
+            </div>
+            <div class="info">
+                <div class="i-tit i-red"><!-- 所需材料 -->dokumen yang dibutuhkan</div>
+                <p>{:htmlspecialchars_decode($info.data)}</p>
+            </div>
+            <div class="info">
+                <div class="i-tit i-green"><!-- 审核说明 -->inspeksi</div>
+                <p>{:htmlspecialchars_decode($info.verify)}</p>
+            </div>
+            <div class="info">
+                <div class="i-tit i-yellow"><!-- 平台介绍 -->deskripsi platform</div>
+                <p>{:htmlspecialchars_decode($info.desc)}
+                </p>
+            </div>
+            <div class="info">
+                <div class="i-tit i-orange"><!-- 算一算 更放心 -->menghitung<span class="gray wauto fnone"><!-- (仅供参考) --></span></div>
+                <div class="gray"><!-- 借多少 -->jumlah pinjaman
+                    <input type="tel" value="" id="jie_money" maxlength="5">
+                    <!-- 元 -->Rp.</div>
+                <div class="gray"><!-- 借多少 -->jumlah pinjaman
+                    <input type="tel" value="" id="jie_day" maxlength="3">
+                    <!-- 天 -->hari</div>
+                <div class="cou mt10"><span class="gray mr10"><!-- 应还款 -->Saldo Baru</span><span id="yhk">0</span><!-- 元 -->Rp.</div>
+                <div class="cou mt10"><span class="gray mr10"><!-- 总费用 -->total biaya</span><span id="zfy">0</span><!-- 元 -->Rp.</div>
+            </div>
+        </div>
+        <div class="fix-s-btn">
+            <button class="submit-now mt0" onclick="Jiekuan('{$info.id}')"><!-- 立即借款 -->pinjam uang</button>
+        </div>
+    </div>
+    
+    <div class="t-comments none" style="padding-bottom: 40px;">
+        <div class="stars">
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均放款速度 -->kecepatan rilis uang rata-rata</span>
+                <div class="star-show" noselect="1">
+                    <ul class="s-white">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="s-show" style="width:{$info.star_speed*20}%;">
+                        <ul class="s-color">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均难易程度 -->tingkat kesulitan rata-rata</span>
+                <div class="star-show" noselect="1">
+                    <ul class="s-white">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="s-show" style="width:{$info.star_difficult*20}%;">
+                        <ul class="s-color">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均催收 -->perkiraan tagihan</span>
+                <div class="star-show" noselect="1">
+                    <ul class="s-white">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="s-show" style="width:{$info.star_collect*20}%;">
+                        <ul class="s-color">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-list">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <div class="c-editor none">
+        <div class="editor-textarea fl"><!-- 分享观点...（请勿发表敏感评论哦） -->
+            <textarea placeholder="bagi" id="textarea"></textarea>
+        </div>
+        <div class="enter fr" id="tucao"></div>
+        <span class="t-count gray"><span class="cur-count">0</span>/140</span>
+    </div>
+    <div class="t-btn none">
+    	<a href="/dianping/198_196/"> <i class="comment"></i> <!-- 点评 -->ulasan </a>
+        <button class="submit-now mt0" onclick="Jiekuan(#)"><!-- 立即申请 --></button>
+    </div>
+</div>
+
+<input type="hidden" class="isdp" value="0">
+<input type="hidden" class="my_dp_count" value="0">
+<input type="hidden" class="max_dianing" value="10">
+<script>
+    $(function () {
+        var isdp = $('.isdp').val();
+        var user_id = $('#User_id').val();
+        if (!user_id) {
+            $('#textarea').attr('readonly', 'readonly');
+            $('.c-editor').removeClass('foc');
+        }
+        if (isdp == '1') {
+            $('.t-comment').trigger('click');
+            $('.fix-s-btn').addClass('none');
+        } else {
+            $('.c-editor').addClass('none');
+            $('.fix-s-btn').removeClass('none');
+        }
+        $('#jie_money,#jie_day').keyup(function () {
+            var jie_money = $('#jie_money').val();
+            var jie_day = $('#jie_day').val();
+            suan(jie_money, jie_day);
+        });
+
+        $('.c-editor textarea').click(function () {
+            var my_dp_count = $('.my_dp_count').val();
+            if (user_id==0) {
+                dialog.alert("login sebelum beri ulasan", '1000');
+                // dialog.alert("请先登录再点评！", '1000');
+                var nowurl = window.location.href;
+                setTimeout("window.location.href = '/login'", 1000);
+                return false;
+            }
+            var max_dianing = $('.max_dianing').val();
+            if (my_dp_count && (my_dp_count - max_dianing) > 0) {
+                dialog.alert("ulasan anda telah dibatasi");
+                // dialog.alert("您的点评次数超过上限！");
+                $('#textarea').attr('readonly', 'readonly');
+                $('.c-editor').removeClass('foc');
+                return false;
+            }
+            $('.c-editor').addClass('foc');
+            if ($('.c-editor').hasClass('foc')) {
+                $('.c-editor').parents('.main').find('.t-comments').addClass('pb0');
+                var eheight = $('.c-editor.foc').offset().top;
+                $('body').scrollTop(eheight);
+            }
+        });
+        $('#tucao').click(function () {
+            var pro_id = "{$info.id}";
+            var url = "/mobile/comment/add";
+            var content = $('#textarea').val();
+            content = $.trim(content);
+            if (!content || content == "") {
+                $('#textarea').val("");
+                $('#textarea').focus();
+                return false;
+            }
+            if (content && content.length < 3) {
+                dialog.alert("ulasan terlalu singkat");
+                // dialog.alert("点评内容太短！");
+                return false;
+            }
+            var param = {pro_id: pro_id, content: content};
+            $.post(url,param,function(msg){
+                dialog.alert(msg.msg);
+                if (msg.status == 1) {
+                    window.location.href = "/detail/"+pro_id;
+                }
+            })
+        });
+        $('.c-editor textarea').blur(function () {
+            setTimeout(function () {
+                $('.c-editor').removeClass('foc');
+                $('.c-editor').parents('.main').find('.t-comments').removeClass('pb0');
+            }, 10);
+        });
+    });
+    function suan(jie_money, jie_day) {
+        if (!jie_money || !jie_day) {
+            $('#yhk').text('0');
+            $('#zfy').text('0');
+            return false;
+        }
+        if (!isNaN(jie_money) && !isNaN(jie_day)) {
+            var rate = "{$info.money_rate}";
+            var yhk = '', zfy = '';
+            zfy = jie_money * (rate / 100) * jie_day;
+            yhk = jie_money - (-zfy);
+            $('#yhk').text(yhk.toFixed(2));
+            $('#zfy').text(zfy.toFixed(2));
+            // setCountsJump("", "1", "0");
+        }
+    }
+
+</script>
+{include file="mobile@public/foot"}

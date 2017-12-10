@@ -1,0 +1,108 @@
+{include file="mobile@public/head"}
+<style>
+.zxy-userNews .zxy-j-list {
+	margin-top: 10px;
+    background: #fff;
+}
+.zxy-userNews .zxy-j-list li {
+    border-bottom: 1px solid #ebebeb;
+	display: block;
+	padding: 10px;
+}
+.zxy-userNews .zxy-j-list li a {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	margin-bottom: 5px;
+	font-size: 16px;
+	line-height: 28px;
+}
+.zxy-userNews .zxy-j-list li a span {
+	display:block;
+	width: calc(100% - 120px);
+	overflow: hidden;
+	float: left;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #333;
+}
+.zxy-userNews .zxy-j-list li a small {
+	display:block;
+	width: 80px;
+	float: right;
+	color: #999;
+	text-align: center;
+}
+.zxy-userNews .zxy-j-list li p {
+	display: block;
+	height: 48px;
+	overflow: hidden;
+	color: #999;
+	font-size: 12px;
+	line-height: 24px;
+}
+</style>
+
+<body>
+<div class="main zxy-userNews">
+    <div class="title"> <i class="back" onclick="window.location.href = '/center'"></i> Uangmart </div>
+    
+    <div class="zxy-j-list">
+    	<ul>
+            {volist name="list" id="vo"}
+        	<li>
+            	<a href="javascript:;"><span>{$vo.title}</span><small>{:substr($vo['create_at'],0,10)}</small></a>
+                <p>{$vo.content}</p>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    {if(empty($list))}
+    <div class="jump_c">
+        <div class="no-data mt50"><img src="__IMG__/no_data.png"></div>
+        <p class="text gray" style="text-align: center;"><!-- 抱歉，暂时没有提醒内容 -->maaf, tidak ada pemberitahuan</p>
+        <p class="s-btn">
+            <a class="grey" href="javascript:history.back();"><button class="submit-now">[ <!-- 点击这里返回上一页 -->klik ke halaman sebelumnya ]</button></a>
+        </p>
+    </div>
+    {/if}
+</div>
+
+<input type="hidden" id="hide_is_data" value="0">
+<input type="hidden" id="hide_page" value="2">
+<script>
+    $(window).scroll(function () {
+        var $this = $(this),
+            viewH = $this.height(), //可见高度  
+            contentH = document.documentElement.scrollHeight, //内容高度  
+            scrollTop = $this.scrollTop(); //滚动高度  
+        if (scrollTop / (contentH - viewH) >= '0.99') {
+            var page = $('#hide_page').val();
+            var hide_is_data = $('#hide_is_data').val();
+            var main = $(".zxy-j-list ul"); //主体元素  
+            if (hide_is_data != '1') {
+                $.ajax({
+                    type: "get",
+                    url: "/mobile/message/index",
+                    dataType: 'json',
+                    async: false,
+                    data: {'page': page},
+                    success: function (msg) {
+                        if (msg.status == '1') {
+	                    	if (msg.msg == '') {
+	                            $('#hide_is_data').val('1');
+	                            return;
+	                        }
+                            $('#hide_page').val(page - (-1));
+                            var $html = msg.msg;
+                            main.append($html);
+                        }else{
+                        	$('#hide_is_data').val('1');
+                        }
+                    }
+                });
+            }
+        }
+    });
+</script>
+{include file="mobile@public/foot"}

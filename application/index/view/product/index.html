@@ -1,0 +1,97 @@
+{include file="index@public/head"}
+<div class="main jiekuan">
+    <!-- 条件筛选 -->
+    <div class="term">
+        <div class="term-type">
+            <div class="tit"><!-- 借款额度 -->jumlah pinjaman</div>
+            <ul>
+            {volist name="dic['money_limit']" id="vo" key="k"}
+                <li {if ($k-1 == $limit[0])}class="cur"{/if}>
+                    <a href="{:substr_replace($limit,$k-1,0,1)}">{$vo}</a>
+                </li>
+            {/volist}
+            </ul>
+        </div>
+        <div class="term-type">
+            <div class="tit"><!-- 借款期限 -->waktu jatuh tempo</div>
+            <ul>
+            {volist name="dic['time_limit']" id="vo" key="k"}
+                <li {if ($k-1 == $limit[2])}class="cur"{/if}>
+                    <a href="{:substr_replace($limit,$k-1,2,1)}">{$vo}</a>
+                </li>
+            {/volist}
+            </ul>
+        </div>
+        <div class="term-type">
+            <div class="tit"><!-- 职业身份 -->pekerjaan</div>
+            <ul>
+            {volist name="dic['profession']" id="vo" key="k"}
+                <li {if ($k-1 == $limit[4])}class="cur"{/if}>
+                    <a href="{:substr_replace($limit,$k-1,4,1)}">{$vo}</a>
+                </li>
+            {/volist}
+            </ul>
+        </div>
+        <div class="term-type">
+            <div class="tit"><!-- 是否新口子 -->Pemohon baru ? Y/N</div>
+            <ul>
+            {volist name="dic['is_new']" id="vo" key="k"}
+                <li {if ($k-1 == $limit[6])}class="cur"{/if}>
+                    <a href="{:substr_replace($limit,$k-1,6,1)}">{$vo}</a>
+                </li>
+            {/volist}
+            </ul>
+        </div>
+    </div>
+
+
+    <!--search-result-list-->
+    <div class="search-result">
+        <div class="sr-list fl link">
+            <ul>
+            {volist name="products" id="product"}
+                <li>
+                    <a href="/detail/{$product.id}" target="_blank">
+                        <div class="hd">
+                            <img class="" src="{$product.logo}" alt="{$product.name}" />
+                            <div class="tit ml15">
+                                <span>{$product.name}</span>
+                                <div class="rate">
+                                    <!-- 额度范围 -->lini kredit：<span class="red mr20 f14">{$product.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                    <span class="red f14">{$product.time_limit}</span>
+                                </div>
+                                <div class="rate-abs f14"><span class="red f24 mr0">{$product.money_rate}%</span>
+                                    <br /><!-- 日利率 -->Bunga Harian</div>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <button class="list-btn fr"><!-- 立即借款 -->pinjam uang</button>
+                            <div class="sr-tag">
+                            {volist name="product['tags']" id="tag"}
+                                <span>{$tag.tag_name}</span>
+                            {/volist}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            {/volist}
+            </ul>
+            <div>{$page|raw}</div>
+        </div>
+        <div class="ad fr">
+            <!-- 合作机构 -->
+            {include file="index@public/coo_ins"}
+            <!-- 合作机构 end -->
+            
+            <!-- 热门攻略 -->
+            {include file="index@public/hot_news"}
+            <!-- 热门攻略 end -->
+            
+            <!-- 算一算 -->
+            {include file="index@public/calculate"}
+            <!-- 算一算 end -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="index@public/foot"}

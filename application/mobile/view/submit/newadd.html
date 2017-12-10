@@ -1,0 +1,56 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main newget">
+    <div class="title"> <i class="back" onclick="window.location.href = '/faxian'"></i> Uangmart </div>
+
+    <div class="m-list">
+        <ul>
+            <li>
+                <label for=""><!-- 新口子名称 -->nama aplikasi baru</label>
+                <input class="name" value="" id="title" placeholder="(wajib)" maxlength="10"><!-- 必填 -->
+            </li>
+            <li>
+                <label for=""><!-- 新口子网址 -->situs aplikasi baru</label>
+                <input class="name" value="" id="url" placeholder="(tidak diperlukan)" maxlength="200"><!-- 非必填 -->
+            </li>
+        </ul>
+    </div>
+    <div class="remark textarea-text">
+        <textarea placeholder="disarankan untuk mengisi (tidak wajib)" id="remark"></textarea><!-- 备注(非必填) -->
+    </div>
+    <div class="s-btn">
+        <button class="submit-now"><!-- 提交 -->kirim</button>
+    </div>
+    <!--<div class="center gray f13">商务合作QQ：860187897</div>-->
+</div>
+
+<script>
+    $(function () {
+        $('.submit-now').on('click', function () {
+            var user_id = $('#User_id').val();
+            // if (!user_id) {
+            //    dialog.alert("请先登录再点评！", 950);
+            //    var nowurl = window.location.href;
+            //    setTimeout("window.location.href = '/Login/?redirect_url=" + nowurl + "'", 500);
+            //    return false;
+            // }
+            var title = $('#title').val();
+            var url = $('#url').val();
+            var remark = $('#remark').val();
+            if (!title) {
+                dialog.alert("nama wajib");
+                // dialog.alert("名称不能为空！");
+                $('#title').focus();
+                return false;
+            }
+            var param = {user_id: user_id, name: title, url: url, desc: remark};
+            $.post('/mobile/submit/newadd',param,function(msg){
+                dialog.alert(msg.msg);
+                if (msg.status==1) {
+                    setTimeout("window.location.href = '/faxian'", 1200);
+                }
+            });
+        });
+    });
+</script>
+{include file="mobile@public/foot"}

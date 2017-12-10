@@ -1,0 +1,108 @@
+{include file="mobile@public/head"}
+<script src="__JS__/jquery.slideunlock.min.js"></script>
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = 'index.html'"></i> Uangmart </div>
+
+    <div class="r-list step1">
+        <div class="r-info brb">
+            <label for="mobile" class="s-tit"><!-- 手机号 -->nomor ponsel</label><!-- 请输入手机号码 -->
+            <input maxlength="11" type="tel" value="" id="mobile" placeholder="masukkan nomor ponsel" data-form-un="1511436671115.9417">
+        </div>
+        <div class="r-info">
+            <label for="mima" class="s-tit"><!-- 登录密码 -->kata sandi</label><!-- 6-20位有效密码 -->
+            <input class="w100" type="password" value="" id="mima" maxlength="20" placeholder="masukkan kata sandi" data-form-pw="1511436671115.9417">
+        </div>
+    </div>
+    <!-- <div class="s-btn">
+        <button class="submit-now" id="login">登陆</button>
+    </div> -->
+    <div class="huadongyz">
+        <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->geser ke kanan</span> </div>
+    </div>
+    <a href="/reg" class="p-login"><!-- 注册&gt;&gt; -->daftar</a>
+</div>
+<script>
+    //滑动验证
+    $(function () {
+        var slider = new SliderUnlock("#slider", {}, function () {
+            var phone = $('#mobile').val();
+            var password = $('#mima').val();
+            console.log(phone);
+            if (!phone || !checkMobile(phone)) {
+                dialog.alert('nomor ponsel error');
+                // dialog.alert('手机号码格式错误！');
+                slider.reset();
+                return false;
+            }
+            if (!password || password.length < 6 || !checkPassword(password)) {
+                dialog.alert('masukkan kata sandi 6-20 digit');
+                // dialog.alert('登录密码格式必须在6-20位！');
+                slider.reset();
+                return false;
+            }
+
+            $.ajax({
+                url: "/mobile/login/doLogin",
+                type: "post",
+                dataType: "json",
+                data: {phone: phone, password: password},
+                success: function (msg) {
+                    console.log(msg)
+                    if (msg.code == 1) {
+                        dialog.alert('login berhasil');
+                        // dialog.alert('登录成功！');
+                        setTimeout("window.location.href = '/center'", 500);
+                        return false;
+                    }else {
+                        slider.reset();
+                        dialog.alert(msg.msg);
+                        return false;
+                    }
+                }
+            });
+        }, function () {
+            $(".warn").text("index:" + slider.index + "， max:" + slider.max + ",lableIndex:" + slider.lableIndex + ",value:" + $("#lockable").val() + " date:" + new Date().getUTCDate());
+        });
+        slider.init();
+        $("#reset-btn").on('click', function () {
+            slider.reset();
+        });
+    });
+
+
+    // 点击登陆
+    $('#login').click(function(){
+        var phone = $('#mobile').val();
+        var password = $('#mima').val();
+        console.log(phone);
+        if (!phone || !checkMobile(phone)) {
+            dialog.alert('nomor ponsel error');
+            // dialog.alert('手机号码格式错误！');
+            return false;
+        }
+        if (!password || password.length < 6 || !checkPassword(password)) {
+            dialog.alert('masukkan kata sandi 6-20 digit');
+            // dialog.alert('登录密码格式必须在6-20位！');
+            return false;
+        }
+        $.ajax({
+            url: "/mobile/login/doLogin",
+            type: "post",
+            dataType: "json",
+            data: {phone: phone, password: password},
+            success: function (msg) {
+                if (msg.code == 1) {
+                    dialog.alert('login berhasil');
+                    // dialog.alert('登录成功！');
+                    setTimeout("window.location.href = '/center'", 500);
+                    return false;
+                }else {
+                    dialog.alert(msg.msg);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+{include file="mobile@public/foot"}

@@ -1,0 +1,33 @@
+﻿{include file="index@public/head"}
+<!--头部-->
+{include file="index@news/top"}
+<div class="main jiekuan">
+    <div class="search-result">
+        <div class="cms-main fl">
+            <div class="cms-detail">
+                <div class="hd"><a href="/news"><!-- 借款攻略 -->Panduan Pinjaman</a>&gt;<a href="/news/{$cate.id}/">{$cate.name}</a>&gt;<a href="javascript:;">{$info.title}</a></div>
+                <div class="bd">
+                    <div class="tit">{$info.title}<div class="date"><!-- 发表时间 -->waktu posting：{$info.create_at}</div>
+                    </div>
+                    <div class="cms-d-article">
+                        {:htmlspecialchars_decode($info.content)}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ad fr mt0">
+             <!-- 贷款产品搜索 -->
+            {include file="index@public/product_search"}
+            <!-- 贷款产品搜索 end -->
+            <div class="ad fr">
+                <!-- 相关产品 -->
+                {include file="index@public/related_products"}
+                <!-- 相关产品 end -->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="mask none"></div>
+{include file="index@public/foot"}

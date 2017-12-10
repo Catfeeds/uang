@@ -1,0 +1,75 @@
+﻿{include file="index@public/head"}
+<div class="main jiekuan pt0">
+    <div class="search-result">
+        <div class="sr-list fl link">
+            <ul>
+                <li class="pb0">
+                    <div class="hd">
+                        <img src="{$info.logo}" alt='{$info.name}' />
+                        <div class="tit ml15">
+                            <span>{$info.name}</span>
+                            <br /> {$info.title} </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="infomation-detail jigou_detail">
+                <div class="bd">
+                    <div class="tit"><!-- 机构介绍 -->Deskripsi perusahaan</div>
+                    {:htmlspecialchars_decode($info['desc'])}
+                    {if (!empty($info['product']))}
+                        <div class="tit"><!-- 机构产品 -->Deskripsi produk</div>
+                        <div class="link">
+                            <ul>
+                                <a href='/institution/{$info["product"]["id"]}'>
+                                    <li>
+                                        <div class="hd">
+                                            <img src="{$info['product']['logo']}">
+                                            <div class="name-detail">
+                                                <div class="tit">
+                                                    <span>{$info['product']['name']}</span> {$info['product']['title']} </div>
+                                                <div class="rate ml0 mt0"><!-- 日利率 -->Bunga Harian：<span class="red f20">{$info['product']['money_rate']}%</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="bd">
+                                            <button class="list-btn fr"><!-- 查看详情 -->Detail</button>
+                                            <div class="rate">
+                                                <!-- 额度范围 -->lini kredit：<span class="red mr20">{$info['product']['money_limit']}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                                <span class="red">{$info['product']['time_limit']}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+                    {/if}
+                </div>
+            </div>
+            <div class="jigou partner">
+                <div class="hd">
+                    <span class="fl"><!-- 合作机构 -->Mitra</span>
+                </div>
+                <div class="jigou-list">
+                    <ul>
+                        {volist name="info['coo_ins']" id="ins"}
+                            <li><a href="/institution/{$ins.id}" target='_blank'><img src="{$ins.logo}" /><span>{$ins.name}</span></a></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ad fr">
+            <!-- 相关产品 -->
+            {include file="index@public/related_products"}
+            <!-- 相关产品 end -->
+            
+            <!-- 贷款产品搜索 -->
+            {include file="index@public/product_search"}
+            <!-- 贷款产品搜索 end -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="mask none"></div>
+<script src="js/common.js"></script>
+<script src="js/pc_public.js"></script>
+{include file="index@public/foot"}

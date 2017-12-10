@@ -1,0 +1,49 @@
+{include file="mobile@public/head"}
+<body>
+
+<div class="main faxian">
+    <div class="title"> <i class="back" onclick="window.location.href = 'index.html'"></i> Uangmart </div>
+    
+    <!-- banner -->
+    {include file="mobile@public/banner"}
+    <!-- banner end -->
+    
+    <div class="d-menu">
+        <div class="menu-tit"><!-- 热门服务 -->layanan popular</div>
+        <div class="m-menu">
+            <ul>
+                <li> <a href="javascript:void(0);" onclick="window.location.href = '/?type=1'">
+                    <div class="m-icons"><img src="__IMG__/fx_icon_xkz.png"></div>
+                    <p><!-- 新口子 -->Mitra baru</p>
+                    </a> </li>
+                <li> <a href="javascript:void(0);" onclick="window.location.href = '/mobile/submit/newadd'">
+                    <div class="m-icons"><img src="__IMG__/fx_icon_tjkz.png"></div>
+                    <p><!-- 提交口子 -->ajukan permohona</p>
+                    </a> </li>
+                {volist name="list" id="vo"}
+                    <li> <a href="javascript:void(0);" onclick="window.location.href = '{$vo.jump_url}'">
+                        <div class="m-icons"><img src="{$vo.img}"></div>
+                        <p>{$vo.title}</p>
+                        </a> </li>
+                {/volist}
+                    
+                <!-- <li> <a href="javascript:void(0);" onclick="window.location.href = 'faxian_quota.html'">
+                    <div class="m-icons"><img src="__IMG__/fx_icon_dejk.png"></div>
+                    <p>大额借款</p>
+                    </a> </li> -->
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var swiper = new Swiper('.swiper-container', {pagination: '.swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: 2500,
+            autoplayDisableOnInteraction: false
+        });
+    </script> 
+</div>
+{include file="mobile@public/foot"}

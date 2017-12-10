@@ -1,0 +1,84 @@
+﻿{include file="index@public/head"}
+<div class="main jiekuan pt0">
+    <div class="search-result">
+        <div class="jisuanqi fl">
+            <div class="hd">
+                <img class="" src="picture/jisuanqi.png"/>
+                kalkulator pinjaman
+                <!-- 贷款计算器 -->
+            </div>
+            <div class="view view-main">
+                <div class="pages navbar-through toolbar-through">
+                    <!-- Page, data-page contains page name-->
+                    <div data-page="calculator" class="page">
+                        <div class="page-content calculator">
+                            <div class="total-interest"> <p><!-- 总息费 -->jumlah bunga</p><h4 id="zlx">0</h4> <span><!-- 元 -->Rp.</span></div>
+                            <div class="calculate-interest">
+                                <!--<p class="notice">* 计算结果仅供参考</p>-->
+                                <ul class="input-info">
+                                    <li>
+                                        <p style="display: inline-block;"><!-- 借款金额 -->jumlah yang dipinjam</p>
+                                        <input type="tel" value="{$par[0]}" maxlength="8" oninput="if(value.length>8)value=value.slice(0,8)" onkeyup="Js(3)" id="x1"/><em><!-- 元 -->Rp.</em>
+                                    </li><li >
+                                        <p style="display: inline-block;"><!-- 借款期限 -->waktu jatuh tempo</p>
+                                        <input type="tel" value="{$par[1]}" placeholder="" maxlength="2" onkeyup="Js(3)" id="x2"  onkeyup="this.value = this.value.replace(/\D/g, '')"/><em><!-- 月 -->Bulan</em>
+                                    </li><li >
+                                        <p style="display: inline-block;"><!-- 月利率 -->Suku bunga bulanan</p>
+                                        <input type="tel" value="{$par[2]}" onkeyup="Js(3)" id="x3"/><em>%</em>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="calculator-items">
+                                <!-- Buttons row as tabs controller -->
+                                <div class="buttons-row">
+                                    <a class="tab-link active button" style="width: 40%" id="bj" onclick="Js(1);"><!-- 等额本金 -->modal rata-rata</a>
+                                    <a class="tab-link button" style="width: 60%" id="bx" onclick="Js(2);"><!-- 等额本息 -->perkiraan modal rata-rata ditambah bunga</a>
+                                </div>
+                                <!-- Tabs, tabs wrapper -->
+                                <div class="tabs">
+                                    <ul id="tab1" class="tab active">
+                                        <li class="title">
+                                            <ul>
+                                                <li class="fl"><!-- 还款总额 -->jumlah pembayaran</li>
+                                                <li class="fl"><!-- 应还本金 -->saldo utama</li>
+                                                <li class="fl"><!-- 应还利息 -->saldo bunga</li>
+                                                <li class="fl"><!-- 期数 -->Jumlah Angsuran</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul id="tab2" class="tab"> </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ad fr">
+            <!-- 相关产品 -->
+            {include file="index@public/related_products"}
+            <!-- 相关产品 end -->
+            <!-- 合作机构 -->
+            {include file="index@public/coo_ins"}
+            <!-- 合作机构 end -->
+        </div>
+    </div>
+<div class="clear"></div>
+</div>
+
+<script>
+
+    $(window).scroll(function () {
+        var top = $(window).scrollTop();
+        if (top > 325) {
+            $('.infomation-detail').addClass('fix');
+            $('.infomation-detail .hd .list-btn').removeClass('none');
+            console.log(1);
+        } else {
+            $('.infomation-detail').removeClass('fix');
+            $('.infomation-detail .hd .list-btn').addClass('none');
+        }
+    });
+</script>
+<script type="text/javascript" src="__JS__/calculator.js"></script>
+{include file="index@public/foot"}

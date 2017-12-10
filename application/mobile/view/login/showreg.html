@@ -1,0 +1,249 @@
+{include file="mobile@public/head"}
+<script src="__COM_JS__/layui/layui.all.js"></script>
+<script src="__JS__/jquery.slideunlock.min.js"></script>
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = 'index.html'"></i> Uangmart </div>
+    
+    <div class="r-list step1">
+        <div class="r-info brb">
+            <label for="mobile" class="s-tit"><!-- 手机号 -->nomor ponsel</label>
+            <input maxlength="11" type="tel" value="" id="mobile">
+            <!-- <button class="get-code fr time" id="time" is_send=""> 获取验证码 dapatkan kode verifikasi</button> -->
+        </div>
+        <!-- <div class="r-info brb">
+            <label for="code" class="s-tit"> 验证码 kode verifikasi</label>
+            <input class="w100" type="tel" value="" id="code" maxlength="6">
+        </div> -->
+        <div class="r-info brb" id="setpassword">
+            <label for="code" class="s-tit"><!-- 登录密码 -->kata sandi</label><!-- 请设置6-20位登录密码 -->
+            <input class="w100" type="password" value="" id="password" maxlength="20" placeholder="masukan 6-20 digit kata sandi ">
+        </div>
+        <div class="r-info brb" id="setpassword">
+            <label for="code" class="s-tit"><!-- 确认密码 -->konfirmasi kata sandi</label><!-- 再次输入密码 -->
+            <input class="w100" type="password" value="" id="password2" maxlength="20" placeholder="masukan kata sandi kembali">
+        </div>
+    </div>
+
+    <div class="step2">
+        <!-- <div class="r-list">
+            <div class="tit">选择职业身份</div>
+            <div class="r-choose brb pb10" id="zhiye"> <span class="cur mr15" data="1">上班族</span> <span class="mr15" data="2">个体户</span> <span class="" data="3">学生党</span> </div>
+            <div class="tit">选择信用资质</div>
+            <div class="r-choose pb10" id="xinyongka"> <span class="cur mr50" data="1">已有信用卡</span> <span class="" data="2">暂无信用卡</span> </div>
+        </div> -->
+        <div class="r-list r-name">
+            <div class="r-info brb">
+                <label for="realname" class="s-tit"><!-- 姓名 -->nama</label><!-- 输入姓名 -->
+                <input type="text" class="w100" value="" id="realname" maxlength="10" placeholder="masukan nama">
+            </div>
+            <!-- <div class="r-info brb">
+                <label for="idcard" class="s-tit"> 身份证号 No ktp</label>输入身份证号
+                <input class="w100" type="text" value="" id="idcard" placeholder="masukan no ktp" maxlength="18">
+            </div> -->
+            <!-- <div class="r-info brb">
+                <label for="qq" class="s-tit">QQ号码</label>
+                <input class="w100" type="tel" value="" id="qq" placeholder="请输入您常用的真实QQ号" maxlength="16">
+            </div> -->
+        </div>
+        <div class="l-xieyi" id="xy">
+            <label>
+                <input type="checkbox" name="xy" checked="true">
+                <!-- 同意并接受 -->setuju dan terima<a href="/contract"><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a> </label>
+        </div>
+        <!-- <div class="s-btn">
+            <button class="submit-now" id="regLogin">立即申请</button>
+        </div> -->
+        <div class="huadongyz">
+            <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->geser ke kanan</span> </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="0" id="pro_id">
+<input type="hidden" value="13622003245" id="hid_mobile">
+<input type="hidden" value="/User/" id="redirect_url">
+<script>
+    //滑动验证
+    $(function () {
+        var slider = new SliderUnlock("#slider", {}, function () {
+            var mobile = $('#mobile').val();
+            var password = $('#password').val();
+            var password2 = $('#password2').val();
+            var code = $('#code').val();
+            // var zhiye = $('#zhiye').find('.cur').attr('data');
+            // var xinyongka = $('#xinyongka').find('.cur').attr('data');
+            var realname = $('#realname').val();
+            var idcard = $('#idcard').val();
+            // var qq = $('#qq').val();
+            if (!mobile || !checkMobile(mobile)) {
+                dialog.alert('nomor ponsel error');
+                // dialog.alert('手机号码格式错误！');
+                return false;
+            }
+            if (!password || !password2 || password.length<6 || password2.length<6) {
+                dialog.alert("kata sandi sal");
+                // dialog.alert("密码填写错误！");
+                slider.reset();
+                return false;
+            }
+            if (password != password2) {
+                dialog.alert("kata sandi tidak sama");
+                // dialog.alert("密码不一致！");
+                slider.reset();
+                return false;
+            }
+            // if (!code || code.length!=6) {
+            //     dialog.alert("Capcha salah");
+            //     // dialog.alert("验证码错误！");
+            //     slider.reset();
+            //     return false;
+            // }
+
+            if (!realname || !(/^[A-Za-z][A-Za-z\s]*[A-Za-z]$/i.test(realname))) {
+                dialog.alert("format nama error");
+                // dialog.alert("姓名格式错误！");
+                slider.reset();
+                return false;
+            }
+
+            // if (idcard && !checkIdentity(idcard)) {
+            //     dialog.alert("No. ktp anda salah");
+            //     // dialog.alert("身份证格式错误！");
+            //     slider.reset();
+            //     return false;
+            // }
+
+            var url = "/mobile/login/reg";
+            var param = {phone: mobile, password:password, code:code, name: realname, idcard: idcard};
+            $.ajax({
+                type: "POST",
+                url: url,
+                timeout: 3000, //超时时间设置，单位毫秒
+                dataType: 'json',
+                async: false,
+                data: param,
+                success: function (msg) {
+                    var code = msg.code;
+                    if (code == "1") {
+                        dialog.alert('');
+                        // dialog.alert('注册成功！');
+                        setTimeout("window.location.href = '/'", 500);
+                    }else{
+                        dialog.alert(msg.msg);
+                        slider.reset();
+                        return false;
+                    }
+                },
+            });
+        }, function () {
+            $(".warn").text("index:" + slider.index + "， max:" + slider.max + ",lableIndex:" + slider.lableIndex + ",value:" + $("#lockable").val() + " date:" + new Date().getUTCDate());
+        });
+        slider.init();
+        $("#reset-btn").on('click', function () {
+            slider.reset();
+        });
+    });
+
+            // $(function () {
+            //     $('#mobile').on("keyup", function () {
+            //         var mobile = $('#mobile').val();
+            //         if (mobile && checkMobile(mobile)) {
+            //             var url = "/ajax/NocareMobile/";
+            //             var param = {mobile: mobile};
+            //             jsfunc.publicAjax(url, param);
+            //         }
+            //     });
+            // });
+            
+            $(function () {
+                // settime(timeObj)
+                $('#time').on("click", function () {
+                    if ($(this).attr('is_send') == 1) {
+                        return;
+                    }
+
+                    var phone = $('#mobile').val();
+                    if (!phone || !checkMobile(phone)) {
+                        dialog.alert('nomor ponsel error');
+                        // dialog.alert('手机号码格式错误！');
+                        return false;
+                    }
+
+                    $.post('mobile/login/sendSms',{phone:phone},function(msg){
+                        layer.alert(msg.msg);
+                        if(msg && msg.code == 1){
+                            // 短信验证码倒计时
+                            var timeObj = $('#time');
+                            timeObj.attr('is_send', '1');
+                            addCookie("secondsremained", 180, 180); //添加cookie记录,有效时间180s
+                            var v = getCookieValue("secondsremained"); //获取cookie值
+                            if (v > 0) {
+                                settime(timeObj);//开始倒计时
+                            }
+                        }
+                    });
+                });
+            });
+</script> 
+<script>
+            //短信验证码倒计时
+            var countdown;
+            var cookie_name = "";
+            function settime(obj) {
+                countdown = getCookieValue("secondsremained");
+                if (isNaN(countdown)) {
+                    obj.attr("is_send", '');
+                    obj.text("dapatkan kode verifikasi");
+                    // obj.text("获取验证码");
+                    return;
+                }
+                if (countdown == 0) {
+                    obj.attr("is_send", '');
+                    obj.text("dapatkan kode verifikasi");
+                    // obj.text("获取验证码");
+                    return;
+                } else {
+                    obj.attr("is_send", '1');
+                    obj.text(countdown + "s");
+                    countdown--;
+                    editCookie("secondsremained", countdown, countdown + 1);
+                }
+                setTimeout(function () {
+                    settime(obj);
+                }, 1000) //每1000毫秒执行一次
+            }
+            function getCookieValue(name) {
+                var strCookie = cookie_name;
+                var arrCookie = strCookie.split(";");
+                for (var i = 0; i < arrCookie.length; i++) {
+                    var arr = arrCookie[i].split("=");
+                    if (arr[0] == name) {
+                        return  unescape(arr[1]);
+                        break;
+                    } else {
+                        return "";
+                        break;
+                    }
+                }
+            }
+            function addCookie(name, value, expiresHours) {
+                var cookieString = name + "=" + escape(value);
+                //判断是否设置过期时间,0代表关闭浏览器时失效
+                if (expiresHours > 0) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + expiresHours * 1000);
+                    cookieString = cookieString + ";expires=" + date.toUTCString();
+                }
+                cookie_name = cookieString;
+            }
+            function editCookie(name, value, expiresHours) {
+                var cookieString = name + "=" + escape(value);
+                if (expiresHours > 0) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + expiresHours * 1000); //单位是毫秒
+                    cookieString = cookieString + ";expires=" + date.toGMTString();
+                }
+                cookie_name = cookieString;
+            }
+</script>
+{include file="mobile@public/foot"}

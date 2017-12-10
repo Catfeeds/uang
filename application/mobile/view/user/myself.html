@@ -1,0 +1,46 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = '/center'"></i> Uangmart </div>
+    
+    <div class="m-list">
+        <ul>
+            <li>
+                <label for="img"><!-- 头像修改 -->ganti avatar</label>
+                <span class="portrait fr"> <img src="{:empty($user.avatar)?'__IMG__/user_por.png':$user.avatar}" class="now_img"> </span>
+                <input class="i-portrait" type="file" name="img" onchange="uploadimg();" id="img">
+            </li>
+            <li  onclick="window.location.href = '/mobile/user/changenickname'">
+                <label><!-- 修改昵称 -->ganti nama</label>
+            </li>
+            <li  onclick="window.location.href = '/mobile/user/changepwd'">
+                <label><!-- 修改密码 -->ganti kata sandi</label>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="s-btn">
+    	<a href="/loginout"><button class="submit-now mt0"><!-- 安全退出 -->keluar dengan aman</button></a>
+    </div>
+</div>
+
+<input type="hidden" id="img_url" value="#">
+<script type="text/javascript" src="__JS__/ajaxfileupload.js"></script> 
+<script>
+    function uploadimg() {
+        $.ajaxFileUpload({
+            url: "/mobile/user/uploadImg", //需要链接到服务器地址   
+            secureuri: false,
+            fileElementId: "img", //文件选择框的id属性  
+            dataType: 'json', //json  
+            success: function (msg) {
+                dialog.alert(msg.msg);
+                if (msg.status == '1') {
+                    $('#img_url').val(msg.src);
+                    $('.now_img').attr("src", msg.src);
+                }
+            }
+        });
+    }
+</script>
+{include file="mobile@public/foot"}

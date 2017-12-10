@@ -1,0 +1,147 @@
+    <!--底部-->
+    <!-- <div class="bottom">
+        <div class="fl mr50">
+            <div class="n-text">
+                <h3 class="f20 mb10">桃来网</h3>
+                <p><a href="/about/us/">关于我们</a></p>
+                <p>商务合作</p>
+                <p class="f14">wangzheng@huyang.com</p>
+            </div>
+        </div>
+        <div class="fr">
+            <div class="weixin fr ">
+                <div class="code-img"><img src="__PIC__/code22.jpg" /></div>
+                <p class="ml0">微信扫一扫关注</p>
+            </div>
+            <div class="weixin fr">
+                <div class="code-img"><img src="__PIC__/code23.png" /></div>
+                <p class="ml0">App下载</p>
+            </div>
+        </div>
+        <div class="popup none">
+            <div id="popup-captcha"></div>
+        </div>
+    </div>
+    <div class="f-top">
+        <p><a href="/aboutus">联系我们</a></p>
+        <i class="fh-top"></i>
+    </div> -->
+    <div class="copyright">Copyright(c)2017 <!-- 北京胡杨网络科技股份有限公司 -->uangmart <!-- <a target="_balnk" href="http://www.miitbeian.gov.cn">闽ICP备14019518号-3</a> --><!--  | <span><a href="http://yongqian.com/rss/" target="_blank">RSS</a></span> --></div>
+    <div class="mask none"></div>
+    <div id="popup-captcha"></div>
+
+    <input type="hidden" value="{:empty($user['id'])?0:$user['id']}" id="User_id">
+
+    <div class="b-login none b-line">
+        <!--登录-->
+        <div class="tit" id="login_head_login"><span><!-- 登 录 -->login</span></div>
+        <!--注册-->
+        <div class="tit none" id="login_head_reg"><span><!-- 注 册 -->Daftar Baru</span></div>
+        <!--密码登录-->
+        <div class="bl-step " id="mima_login"><!-- 请输入手机号 -->
+            <div class="st"><input type="text" placeholder="masukkan nomor ponsel" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" id="guanjia_mobile_2"/></div><!-- 请输入密码 -->
+            <div class="st"><input type="password" placeholder="masukkan kata sandi"  maxlength="20" id="guanjia_password_2" /></div>
+            <button class="submit-blue login_submit"><!-- 立即登录 -->login sekarang</button>
+            <span class="mes login_button_reg"><!-- 注册 -->Daftar Baru</span>
+        </div>
+        <!--验证码登录-->
+        <div class="bl-step none" id="duanxin_login"><!-- 请输入手机号 -->
+            <div class="st"><input type="text" placeholder="masukkan nomor ponsel" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" id="guanjia_mobile_1" /></div>
+            <div class="st-yz-code"><!-- 请输入短信验证码 -->
+                <input class="" type="text" placeholder="masukan kode verifikasi SMS" maxlength="6" onkeyup="this.value = this.value.replace(/\D/g, '')" id="guanjia_code_1" />
+                <button class="code-blue fr" id="get_guanjia_code"><!-- 获取验证码 -->dapatkan kode verifikasi</button>
+            </div>
+            <div class="pc-l-xieyi f12">
+                <label>
+                    <input type="checkbox" name="xy" checked="true" id="guanjia_xieyi_1">
+                    <!-- 同意并接受 -->setuju dan terima<a href="/contract/" target='_blank'><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a>
+                </label>
+            </div>
+            <button class="submit-blue login_submit"><!-- 立即登录 -->login sekarang</button>
+            <span class="mes login_button_mima"><!-- 密码登录 -->login kata sandi</span>
+        </div>
+        <!--注册-->
+        <div class="bl-step none" id="reg_login"><!-- 请输入手机号 -->
+            <div class="st"><input placeholder="masukkan nomor ponsel" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" id="guanjia_mobile_3"/></div>
+            <div class="af-in-code none" style="padding-left: 44px;width: 300px;">
+                <input placeholder="masukan kode verifikasi SMS" maxlength="6" onkeyup="this.value = this.value.replace(/\D/g, '')" id="guanjia_code_3" /><!-- 请输入短信验证码 -->
+                <button class="code-blue fr" id="get_reg_code"><!-- 获取验证码 -->dapatkan kode verifikasi</button>
+            </div><!-- 设置6-20位数字字母组合密码 -->
+            <div class="st"><input type="password" placeholder="masukan 6-20 digit kata sandi" maxlength="20" id="guanjia_password_3"/></div><!-- 请输入您的真实姓名 --><!-- 请输入身份证号码 -->
+            <div class="st"><input type="text" placeholder="masukan nama anda" maxlength="15"  id="guanjia_realname"/></div>
+            <!-- <div class="st"><input type="text" placeholder="masukan nomor ktp anda" maxlength="18"  id="guanjia_idcard" /></div> -->
+            <!-- <div class="sel-list">
+                <ul id="guanjia_zhiye">
+                    <li class="cur" data="1">上班族</li>
+                    <li data="2">个体户</li>
+                    <li data="3">学生党</li>
+                </ul>
+            </div>
+            <div class="sel-list">
+                <ul id="guanjia_xyk">
+                    <li class="cur" data="1">有信用卡</li>
+                    <li data="2">无信用卡</li>
+                </ul>
+            </div> -->
+            <div class="pc-l-xieyi f12">
+                <label>
+                    <input type="checkbox" name="xy" checked="true" id="guanjia_xieyi_3">
+                    <!-- 同意并接受 -->setuju dan terima<a href="/contract/" target='_blank'><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a>
+                </label>
+            </div>
+            <button class="submit-blue login_submit"><!-- 立即登录 -->login sekarang</button>
+            <span class="pas"><!-- 已有账号 -->sudah punya akun，<span class="blue login_button_mima"><!-- 立即登录 -->login sekarang</span></span>
+        </div>
+        <div class="pc-close"></div>
+    </div>
+<script>
+    // 验证验证码,请求发送短信
+    // $("#get_reg_code").click(function(){
+    //     var phone = $('#guanjia_mobile_3').val();
+    //     if ($(this).attr('is_send') == 1) {
+    //         return;
+    //     }
+    //     // 校验手机号码
+    //     if (!phone || !checkMobile(phone)) {
+    //         dialog.alert('手机号码格式错误！');
+    //         return false;
+    //     }
+    //     // 展示验证码
+    //     layer.open({
+    //         content: '<div><img src="common/verify/checkVerify.html" onclick="javascript:this.src=\'/common/verify/checkverify.html?tm=\'+Math.random();"><input type="text" id="verify_value" /></div>',
+    //         yes:function(){
+    //             var v_code = $('#verify_value').val();
+    //             $.post('index/login/sendSms',{phone:phone,v_code:v_code},function(msg){
+    //                 layer.alert(msg.msg);
+    //                 if(msg && msg.code == 1){
+    //                     // 短信验证码倒计时
+    //                     var timeObj = $('#get_reg_code');
+    //                     timeObj.attr('is_send', '1');
+    //                     addCookie("secondsremained", 180, 180); //添加cookie记录,有效时间180s
+    //                     var v = getCookieValue("secondsremained"); //获取cookie值
+    //                     if (v > 0) {
+    //                         settime(timeObj);//开始倒计时
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+
+    // 点击回到顶部
+    $(window).scroll(function () {
+        var top = $(window).scrollTop();
+        if (top > 150)
+            $('.f-top').fadeIn(100);
+        else
+            $('.f-top').fadeOut(100);
+    });
+    $('.fh-top').click(function () {
+        $(window).scrollTop(0);
+    });
+</script>
+<script src="__COM_JS__/gt.js"></script>
+<script src="__COM_JS__/common.js"></script>
+<script src="__JS__/pc_public.js"></script>
+</body>
+</html>

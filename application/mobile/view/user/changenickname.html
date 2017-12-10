@@ -1,0 +1,41 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = '/mobile/user/myself'"></i> Uangmart </div>
+    
+    <div class="m-list">
+        <ul>
+            <li>
+                <label for="nickname"><!-- 修改昵称 -->ganti nama panggilan</label>
+                <input class="name fr" value="{$user.name}" id="nickname" maxlength="10">
+            </li>
+        </ul>
+    </div>
+    <div class="s-btn">
+        <button class="submit-now" id="xiugai"><!-- 确认修改 -->konfirmasi</button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#xiugai').on('click', function () {
+            var nickname = $('#nickname').val();
+            if (!nickname || !(/^[A-Za-z][A-Za-z\s]*[A-Za-z]$/i.test(nickname))) {
+                dialog.alert("format nama error");
+                // dialog.alert("姓名格式错误！");
+                return false;
+            }
+            var url = "/mobile/user/update";
+            var param = {name: nickname, type: 'upname'};
+            $.post(url,param,function(msg){
+                dialog.alert(msg.msg);
+                if (msg.status==1) {
+                    setTimeout(function(){
+                        window.location.href = '/mobile/user/myself';
+                    },1000)
+                }
+            });
+        });
+    });
+</script>
+{include file="mobile@public/foot"}

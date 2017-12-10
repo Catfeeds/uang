@@ -1,0 +1,26 @@
+{include file="mobile@public/head"}
+</head>
+
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = '/'"></i> Uangmart </div>
+    
+    <div class="w-banner">
+    	<img src="__IMG__/wode_banner.png">
+        <a href="/mobile/user/myself"> <span class="portrait"> <img src="{:empty($user.avatar)?'__IMG__/user_por.png':$user.avatar}"> </span> <span class="name">{$user.phone}</span> </a>
+    </div>
+    
+    <div class="w-list">
+        <ul>
+            <li><a href="/mobile/view/index">riwayat</a></li>
+            <li><a href="/mobile/user/rebate">cashback saya<span class="gray9 fr mr20"><!-- 预计返0元 --></span></a></li>
+            
+            <!-- <li><a href="/User/mybbs/">我的帖子</a></li> -->
+            <li> <a href="/mobile/message/index"><!-- 我的消息 -->pesan</a></li>
+            
+            <li><a href="/mobile/user/aboutus"><!-- 关于我们 -->tentang kami</a></li>
+        </ul>
+    </div>
+    
+</div>
+{include file="mobile@public/foot"}

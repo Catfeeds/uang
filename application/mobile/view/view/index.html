@@ -1,0 +1,36 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main viewlog">
+    <div class="title"> <i class="back" onclick="window.location.href = '/center'"></i> Uangmart </div>
+    
+    <div class="j-list">
+        <ul>
+            {volist name="list" id="vo"}
+            <li>
+            	<span onclick="window.location.href = '/detail/{$vo.product.id}'">
+            		<img src="{$vo.product.logo}">
+                	<div class="tit"> {$vo.product.name}
+                    	<div class="date"><!-- 最高借款额度<span class="red">20000元</span> -->{$vo.product.title}</div>
+                	</div>
+                </span>
+                <div class="fr center">
+                    <button class="jiekuan-btn" onclick="Jiekuan('{$vo.product.id}')"><!-- 马上借款 -->pinjam sekarang</button>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    
+    <!--无数据时显示-->
+    <div class="nodata {if(!empty($list))}none{/if}">
+        <div class="no-data"><img src="__IMG__/jk2.png"></div>
+        <p class="nod gray mt15"><!-- 暂无浏览记录 -->riwayat cashback sekarang</p>
+        <div class="s-btn">
+        	<a href="/">
+            	<button class="submit-now"><!-- 马上借款 -->pinjam sekarang</button>
+            </a>
+        </div>
+    </div>
+    
+</div>
+{include file="mobile@public/foot"}

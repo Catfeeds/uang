@@ -1,0 +1,107 @@
+{include file="mobile@public/head"}
+
+<body>
+<div class="main fanli">
+    <div class="title"> <i class="back" onclick="window.location.href = '/center'"></i> Uangmart </div>
+    
+    <div class="f-banner">
+        <div class="round1">
+            <div class="round2">
+                <div class="round3">
+                    <p class="red">0</p>
+                    <p><!-- 返利总额(元) -->jumlah cashback</p>
+                </div>
+            </div>
+        </div>
+        <p class="f-remark"><!-- 满100元即可提现 -->tarik setelah jumlah diatas 100</p>
+    </div>
+    
+    <div class="j-list">
+        <ul>
+            {volist name="list" id="vo"}
+            <li>
+                <span onclick="window.location.href = '/detail/{$vo.id}'">
+                    <img src="{$vo.logo}">
+                    <div class="tit"> {$vo.name}
+                        <div class="date">{$vo.title}<!-- 最高借款额度<span class="red">20000元</span> --></div>
+                    }
+                    </div>
+                </span>
+                <div class="fr red center">
+                    0<!-- 元 -->Rp.
+                </div>
+            </li>
+            {/volist}
+        	<!-- <li>
+            	<span onclick="window.location.href = 'channel.html'">
+            		<img src="https://def-201821.picsh.myqcloud.com/201821/0/518a86bd-286a-4bc5-8a0b-0f2c95bc4619/original">
+                	<div class="tit"> 华能速贷
+                    	<div class="date">最高借款额度<span class="red">20000元</span></div>
+                	</div>
+                </span>
+                <div class="fr red center">
+                    0元
+                </div>
+            </li>
+            <li>
+            	<span onclick="window.location.href = 'channel.html'">
+            		<img src="https://def-201821.picsh.myqcloud.com/201821/0/518a86bd-286a-4bc5-8a0b-0f2c95bc4619/original">
+                	<div class="tit"> 华能速贷
+                    	<div class="date">最高借款额度<span class="red">20000元</span></div>
+                	</div>
+                </span>
+                <div class="fr red center">
+                    0元
+                </div>
+            </li> -->
+        </ul>
+    </div>
+    
+    <!--无数据时显示-->
+    <div class="nodata {if (!empty($list))}none{/if}">
+        <div class="no-data mt30"><img src="__IMG__/jk2.png"></div>
+        <p class="nod gray mt15"><!-- 暂无返现记录 -->riwayat cashback sekarang</p>
+        <div class="s-btn">
+        	<a href="/"><button class="submit-now"><!-- 马上借款 -->pinjam sekarang</button></a>
+        </div>
+    </div>
+    
+</div>
+<input type="hidden" id="hide_is_data" value="0">
+<input type="hidden" id="hide_page" value="2">
+<script>
+    $(window).scroll(function () {
+        var $this = $(this),
+            viewH = $this.height(), //可见高度  
+            contentH = document.documentElement.scrollHeight, //内容高度  
+            scrollTop = $this.scrollTop(); //滚动高度  
+        if (scrollTop / (contentH - viewH) >= '0.99') {
+            var page = $('#hide_page').val();
+            var hide_is_data = $('#hide_is_data').val();
+            var main = $(".j-list ul"); //主体元素  
+            if (hide_is_data != '1') {
+                $.ajax({
+                    type: "get",
+                    url: "/mobile/user/rebate",
+                    dataType: 'json',
+                    async: false,
+                    data: {'page': page},
+                    success: function (msg) {
+                        if (msg.status == '1') {
+                            if (msg.msg == '') {
+                                $('#hide_is_data').val('1');
+                                return;
+                            }
+                            $('#hide_page').val(page - (-1));
+                            var $html = msg.msg;
+                            main.append($html);
+                        }else{
+                            $('#hide_is_data').val('1');
+                        }
+                    }
+                });
+            }
+        }
+    });
+</script>
+{include file="mobile@public/foot"}

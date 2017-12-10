@@ -1,0 +1,41 @@
+﻿{include file="index@public/head"}
+<!--头部-->
+{include file="index@news/top"}
+<div class="main jiekuan">
+    <div class="search-result">
+        <div class="cms-main fl">
+            <div class="di-list">
+                <div class="hd">
+                    <span class="tit fl">{$cate.name}<!-- 资讯 -->berita</span>
+                </div>
+                <ul>
+                    {volist name="news['data']" id="vo"}
+                        <li class="no-img">
+                            <a href="/news/detail/{$vo.id}" target="_blank">
+                                <div class="tit">{$vo.title}</div>
+                                <div class="text">
+                                    {:htmlspecialchars_decode(preg_match_content($vo.content))}...</div>
+                                <div class="date">{$vo.create_at}</div>
+                            </a>
+                        </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div>{$page|raw}</div>
+        </div>
+        <div class="ad fr mt0">
+             <!-- 贷款产品搜索 -->
+            {include file="index@public/product_search"}
+            <!-- 贷款产品搜索 end -->
+            <div class="ad fr">
+                <!-- 相关产品 -->
+                {include file="index@public/related_products"}
+                <!-- 相关产品 end -->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="mask none"></div>
+{include file="index@public/foot"}

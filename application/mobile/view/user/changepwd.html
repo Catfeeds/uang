@@ -1,0 +1,62 @@
+{include file="mobile@public/head"}
+<body>
+<div class="main">
+    <div class="title"> <i class="back" onclick="window.location.href = '/mobile/user/myself'"></i> Uangmart </div>
+
+    <div class="m-list">
+        <ul>
+            <li>
+                <label for="password"><!-- 旧密码 -->kata sandi lama</label>
+                <input type="password" class="name fr" value="" maxlength="20" id="pwd0">
+            </li>
+            <li>
+                <label for="password"><!-- 新密码 -->kata sandi baru</label>
+                <input type="password" class="name fr" value="" maxlength="20" id="pwd1">
+            </li>
+            <li>
+                <label for="password"><!-- 再次输入 -->masukan kembali</label>
+                <input type="password" class="name fr" value="" maxlength="20" id="pwd2">
+            </li>
+        </ul>
+    </div>
+    <div class="s-btn">
+        <button class="submit-now" id="xiugai"><!-- 确认修改 -->konfirmasi</button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#xiugai').on('click', function () {
+            var pwd0 = $('#pwd0').val();
+            var pwd1 = $('#pwd1').val();
+            var pwd2 = $('#pwd2').val();
+            if (!pwd0 || !pwd1 || !pwd2) {
+                dialog.alert("Mohon masukan data pada kolom yang dibutuhkan");
+                // dialog.alert("请输入必要数据！");
+                return false;
+            }
+            console.log(pwd1)
+            if (!checkPassword(pwd1)) {
+                dialog.alert("masukkan kata sandi 6-20 digit");
+                // dialog.alert("密码格式必须在6-20位英文数字组合！");
+                return false;
+            }
+            if (pwd1 !== pwd2) {
+                dialog.alert("kata sandi tidak sama");
+                // dialog.alert("两次输入密码不一致！");
+                return false;
+            }
+            var url = "/mobile/user/update";
+            var param = {oldpwd: pwd0, password: pwd2, type:'uppwd'};
+            $.post(url,param,function(msg){
+                dialog.alert(msg.msg);
+                if (msg.status==1) {
+                    setTimeout(function(){
+                        window.location.href = '/mobile/user/myself';
+                    },1000)
+                }
+            });
+        });
+    });
+</script>
+{include file="mobile@public/foot"}

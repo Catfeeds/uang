@@ -1,0 +1,22 @@
+<div class="product b-line">
+    <div class="tit"><span><!-- 相关产品 -->produk terkait</span></div>
+    <ul>
+        {volist name="related_products" id="vo"}
+            <li>
+                <a href="/detail/{$vo.id}">
+                    <div class="hd">
+                        <img src="{$vo.logo}" alt="{$vo.name}" />
+                        <div class="name-detail ml5">
+                            <div class="tit">{$vo.name}</div>
+                            <div class="rate"><!-- 日利率 -->Bunga Harian：<span class="red f20">{$vo.money_rate}%</span></div>
+                        </div>
+                    </div>
+                    <div class="bd">
+                        <span><!-- 期限 -->waktu jatuh tempo:{$vo.time_limit}</span>
+                        <span><!-- 范围 -->mengatur:{$vo.money_limit}</span>
+                    </div>
+                </a>
+            </li>
+        {/volist}
+    </ul>
+</div>

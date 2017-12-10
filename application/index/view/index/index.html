@@ -1,0 +1,252 @@
+﻿{include file="index@public/head"}
+    <link rel="stylesheet" type="text/css" href="__COM_CSS__/swiper.min.css">
+    <script type="text/javascript" src="__COM_JS__/swiper.min.js"></script>
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <div class="swiper-slide item">
+                    <a href="detail/4/" onclick="setCountsJump('', '2', '35')" target="_blank">
+                        <img alt="及贷降息啦" src="__PIC__/01e71a9551494f73a5f6437cea4835a9.gif">
+                    </a>
+                </div> -->
+                {volist name="banners" id="banner"}
+                <div class="swiper-slide item" style="width: 100%; margin-right: 30px;">
+                    <a href="javascript:;">
+                        <img alt="" src="{$banner.img}">
+                    </a>
+                </div>
+                {/volist}
+            </div>
+            <div class="swiper-pagination pagination"></div>
+        </div>
+        <div class="w1000 none">
+            <div class="apply-form" {if (!empty($user))}style="display: none;"{/if}>
+                <div class="tit"><!-- 立即申请借款 -->setuju untuk meminjam uang</div>
+                <div class="af-in"><!-- 请输入手机号 -->
+                    <input type="text" placeholder="masukkan nomor ponsel" id="guanjia_mobile_1" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" value="18354001201" />
+                </div>
+                <div class="af-in">
+                    <input type="password" id="guanjia_pwd_1" placeholder="masukkan kata sandi" /><!-- 请输入密码 -->
+                </div>
+                <!-- <div class="af-in-code">
+                    <input type="text" placeholder="请输入验证码" id="guanjia_code_1" maxlength="6" onkeyup="this.value = this.value.replace(/\D/g, '')" />
+                    <button class="code-blue fr" id="get_guanjia_code">获取验证码</button>
+                </div> -->
+                <button class="submit-blue" id="guanjia_login"><!-- 立即借款 -->pinjam uang</button>
+                <div class="pc-l-xieyi f12">
+                    <label>
+                        <input type="checkbox" name="xy" checked="true" id="guanjia_xieyi_1"> <!-- 同意并接受 -->setuju dan terima
+                        <a href="/contract/" target='_blank'><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--内容部分-->
+<div class="main">
+    <div class="fast">
+        <ul>
+            <li>
+                <img src="__PIC__/fast1.png" />
+                <h3><!-- 放款快 -->pencairan uang cepat</h3>
+                <p><!-- 最快1分钟到账 -->1 menit uang cair</p>
+            </li>
+            <li>
+                <img src="__PIC__/fast2.png" />
+                <h3><!-- 利率低 -->suku bunga rendah</h3>
+                <p><!-- 利率低值0.02% -->bunga rendah sampai 0.02%</p>
+            </li>
+            <li>
+                <img src="__PIC__/fast3.png" />
+                <h3><!-- 额度高 -->lini Kredit tinggi</h3>
+                <p><!-- 最高5万额度 -->Sampai dengan 50 jt</p>
+            </li>
+            <li>
+                <img src="__PIC__/fast4.png" />
+                <h3><!-- 门槛低 -->persyaratan mudah</h3>
+                <p><!-- 凭身份证就能借款 -->dapatkan uang cukup dengan KTP</p>
+            </li>
+        </ul>
+    </div>
+    <!--新口子，放款快，职业-->
+    <div class="link">
+        <div class="new-enter">
+            <table>
+                <tr>
+                    <td class="ne-left" rowspan="2">
+                        <p class="tit"><!-- 新口子 -->Mitra baru</p>
+                        <p><!-- 每日 -->setiap hari</p>
+                        <p><!-- 新增2-3个 -->Tambahkan 2 - 3</p>
+                        <p><!-- 新口子 -->Mitra baru</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-1/"><!-- 更多 -->lebih banyak ></a></p>
+                    </td>
+                    {volist name="news" id="new"}
+                        <td class="ne-right">
+                            <a href="/detail/{$new.id}" target='_blank'>
+                                <div class="hd">
+                                    <img src="{$new.logo}" />
+                                    <div class="name-detail">
+                                        <div class="tit">{$new.name}</div>
+                                        <div class="rate"><!-- 日利率 -->Bunga Harian：<span class="red f20">{$new.money_rate}%</span></div>
+                                    </div>
+                                    <div class="tag t-red"></div>
+                                </div>
+                                <div class="bd">
+                                    <div class="rate">
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$new.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <span class="red">{$new.time_limit}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td> 
+                    {/volist}
+                </tr>
+            </table>
+        </div>
+        <div class="fast-kuan">
+            <table>
+                <tr>
+                    <td class="ne-left" rowspan="2">
+                        <p class="tit"><!-- 放款快 -->pencairan uang cepat</p>
+                        <p><!-- 1分钟到账 -->1 menit uang cair</p>
+                        <p><!-- 凭身份证 -->dapatkan uang cukup dengan KTP</p>
+                        <p><!-- 就能借 -->pinjam uang</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->lebih banyak ></a></p>
+                    </td>
+                    {volist name="fasts" id="fast"}
+                        <td class="ne-right">
+                            <a href="/detail/{$fast.id}" target='_blank'>
+                                <div class="hd">
+                                    <img src="{$fast.logo}" />
+                                    <div class="name-detail">
+                                        <div class="tit">{$fast.name}</div>
+                                        <div class="rate"><!-- 日利率 -->Bunga Harian：<span class="red f20">{$fast.money_rate}%</span></div>
+                                    </div>
+                                    <div class="tag t-red"></div>
+                                </div>
+                                <div class="bd">
+                                    <div class="rate">
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$fast.money_limit}</span> <!-- 借款期限 waktu jatuh tempo-->：
+                                        <span class="red">{$fast.time_limit}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td> 
+                    {/volist}
+            </table>
+        </div>
+        <div class="occupation mb0">
+            <table>
+                <tr>
+                    <td class="ne-left" rowspan="2">
+                        <p class="tit"><!-- 职业 -->pekerjaan</p>
+                        <p><!-- 上班族 -->karyawan？</p>
+                        <p><!-- 学生党 -->pelajar？</p>
+                        <p><!-- 想借就借 -->pinjam sesuai keinginanmu</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->lebih banyak ></a></p>
+                    </td>
+                    {volist name="professions" id="profession"}
+                        <td class="ne-right">
+                            <a href="/detail/{$profession.id}" target='_blank'>
+                                <div class="hd">
+                                    <img src="{$profession.logo}" />
+                                    <div class="name-detail">
+                                        <div class="tit">{$profession.name}</div>
+                                        <div class="rate"><!-- 日利率 -->Bunga Harian：<span class="red f20">{$profession.money_rate}%</span></div>
+                                    </div>
+                                    <div class="tag t-red"></div>
+                                </div>
+                                <div class="bd">
+                                    <div class="rate">
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$profession.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <span class="red">{$profession.time_limit}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td> 
+                    {/volist}
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--fasts-->
+    <div class="news none">
+        <div class="news-left fl">
+            <a href="/news/detail/{$news_first.id}" target='_blank'>
+                <div class="first">
+                    <img class="fl" src="{$news_first.img}" alt="芝麻分过700好羡慕 学会了你也可以开借呗最高20w！" />
+                    <div class="tit">{$news_first.title}</div>
+                    <div class="detail">{:htmlspecialchars_decode(preg_match_content($news_first.content,60))}...</div>
+                </div>
+            </a>
+            {volist name="news_later" id="la"}
+            <a href="/news/detail/{$la.id}" target='_blank'>
+                <div class="later">
+                    <div class="date">
+                        {:substr($la['create_at'],0,10)} </div>
+                    {$la.title} </div>
+            </a>
+            {/volist}
+        </div>
+        <div class="news-center fl">
+            <table class="nc-tab">
+                <tr>
+                {volist name="cates" id="cate"}
+                    <td {if($cate['id']==1)}class="cur"{/if}><span>{$cate.name}</span></td>
+                {/volist}
+                </tr>
+            </table>
+            <ul class="news-list">
+            {volist name="cates" id="cate"}
+                <li>
+                {volist name="cate['news']" id="news"}
+                    <a href="/news/detail/{$news.id}" target='_blank'>
+                        <div class="nc-news no-img">
+                            <div class="tit">{$news.title}</div>
+                            <div class="detail">{:htmlspecialchars_decode(preg_match_content($news.content,39))}...</div>
+                        </div>
+                    </a>
+                {/volist}
+                </li>
+            {/volist}
+            </ul>
+        </div>
+        <!-- 算一算 -->
+        {include file="index@public/calculate"}
+        <!-- 算一算 end -->
+    </div>
+    <!--jigou-->
+    <div class="jigou">
+        <div class="hd">
+            <span class="fl"><!-- 合作机构 -->Mitra</span>
+            <!--<a href="" class="fr f12 gray">更多》</a>-->
+        </div>
+        <div class="jigou-list">
+            <ul>
+                {volist name="institutions" id="ins"}
+                    <li><a href="/institution/{$ins.id}" target='_blank'><img src="{$ins.logo}" /><span>{$ins.name}</span></a></li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+    <!--jigou-->
+</div>
+<script>
+$('.nc-tab td').click(function() {
+    $(this).addClass('cur').siblings().removeClass('cur');
+    var num = $(this).index();
+    $('.news-list li').eq(num).removeClass('none').siblings().addClass('none');
+});
+var mySwiper = new Swiper('.swiper-container', {
+    lazyLoading: true,
+    autoplay: 3000,
+    lazyLoadingOnTransitionStart: true,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    pagination: '.swiper-pagination',
+    paginationClickable: true
+});
+</script>
+{include file="index@public/foot"}

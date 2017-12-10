@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="__COM_CSS__/swiper.min.css">
+<script type="text/javascript" src="__COM_JS__/swiper.min.js"></script>
+<div class="banner">
+    <div class="swiper-container swiper-container-horizontal swiper-container-android">
+        <div class="swiper-container swiper-container-horizontal swiper-container-android">
+            <div class="swiper-wrapper">
+            	{volist name="banners" id="banner"}
+				<div class="swiper-slide item" style="width: 100%; margin-right: 30px;"> <a href="javascript:void(0);"> <img src="{$banner.img}" alt=""> </a> </div>
+            	{/volist}
+            </div>
+        </div>
+        <div class="swiper-pagination pagination swiper-pagination-clickable swiper-pagination-bullets">
+        	{volist name="banners" id="banner"}
+            <span class="swiper-pagination-bullet"></span>
+            {/volist}
+        </div>
+    </div>
+</div>

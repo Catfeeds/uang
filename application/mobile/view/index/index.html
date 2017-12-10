@@ -1,0 +1,149 @@
+﻿{include file="mobile@public/head"}
+<body>
+
+<div class="main mb110">
+    <!-- banner -->
+    {include file="mobile@public/banner"}
+    <!-- banner end -->
+    
+    <!-- <div class="banner">
+        <div class="swiper-container swiper-container-horizontal swiper-container-android">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide item" style="width: 100%; margin-right: 30px;"> <a href="javascript:void(0);"> <img src="__IMG__/banner1.jpg" alt=""> </a> </div>
+                <div class="swiper-slide item" style="width: 100%; margin-right: 30px;"> <a href="javascript:void(0);"> <img src="__IMG__/banner2.jpg" alt=""> </a> </div>
+                <div class="swiper-slide item" style="width: 100%; margin-right: 30px;"> <a href="javascript:void(0);"> <img src="__IMG__/banner3.jpg" alt=""> </a> </div>
+            </div>
+        </div>
+        <div class="g-bg">
+            <i class="gg"></i>
+            <div class="gundong">
+                <span class="gundong1">每日20:00更新新口子，关注微信公众号【桃来网】及时获取最新动态</span>
+                <span class="gundong2">每日20:00更新新口子，关注微信公众号【桃来网】及时获取最新动态</span>
+            </div>
+            <i class="g-close"></i>
+        </div>
+    </div> -->
+    
+    <div class="tab f14 t-index">
+        <table>
+            <tbody>
+                <tr>
+                    <td {if(empty($type))}class="cur"{/if}><a href="/"><span><!-- 热门 -->Popular</span></a></td>
+                    <td {if($type==1)}class="cur"{/if}><a href="/?type=1"><span><!-- 新口子 -->Mitra baru</span></a></td>
+                    <td {if($type==2)}class="cur"{/if}><a href="/?type=2"><span><!-- 未申请 -->belum disetujui<!-- <span class="red" id="weishenqing_count">(99)</span> --></span></a></td>
+                    <td {if($type==3)}class="cur"{/if}><a href="/?type=3"><span><!-- 已申请 -->disetujui<!-- <span class="red" id="yishenqing_count">(0)</span> --></span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- <div class="i-point center gray9 f12 "> <span>共有119个口子，预计可借<span class="red pd0">178500</span>元</span> </div> -->
+    
+    <div class="loadingmore">
+        {volist name="products" id="vo"}
+        <div class="info index-layout">
+            <div class="hd">
+                <span class="gray" onclick="window.location.href = '/detail/{$vo.id}'">
+                    <span class="tag"><!-- 新口子 -->Mitra baru</span>
+                    <a class="fl f16 mr10" href="javascript:;">{$vo.name}</a> {$vo.title} 
+                </span>
+                <!-- 评论 -->
+                <span class="mes" onclick="window.location.href = '/detail/{$vo.id}?c=1'">
+                    <span class="num">{$vo.comments_count}</span>
+                </span>
+            </div>
+            <span onclick="window.location.href = '/detail/{$vo.id}'">
+                <div class="bd">
+                    <div class="infor fl">
+                        <div class="count red">{$vo.money_max}</div>
+                        <div class="count-d gray"><!-- 最高借款额度(元) -->lini kredit tertinggi</div>
+                    </div>
+                    <div class="infor fl">
+                        <div class="margin">
+                            <div class="infor-m"><span class="gray"><!-- 借款期限 -->waktu jatuh tempo </span>{$vo.time_limit}</div>
+                            <div class="infor-m"><span class="gray"><!-- 最低利率 -->bunga terendah </span>{$vo.money_rate}%</div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            
+            <div class="fd"> 
+                <!--第一次申请调用 FirstClick()--> 
+                <!--未申请--> 
+                <span class="i-apply on ">
+                    {if(empty($vo.apply))}
+                    <i class="applied"></i> <span class="blue f16 " pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->disetujui？</span>
+                    <span class="gray f16 none" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->telah registrasi sebelumnya</span>
+                    {else /}
+                    <i class="apply"></i> <span class="blue f16 none" pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->disetujui？</span>
+                    <span class="gray f16" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->telah registrasi sebelumnya</span>
+                    {/if}
+                    
+                    
+                </span>
+                <div class="layout index-apply none">
+                    <img src="__IMG__/plane.png" alt="">
+                    <p><!-- 确定已申请注册过 -->telah registrasi sebelumnya【<span>{$vo.name}</span>】?</p>
+                    <p class="f12 left gray" style="text-align:center;"><!-- *只要申请过，无论成功下款与否，都视为已申请哦 --></p>
+                    <button class="yes"><!-- 是，我注册过 -->Ya</button>
+                    <button class="no"><!-- 不，我点错了 -->Tidak</button>
+                </div>
+                <button class="jiekuan-btn fr" onclick="Jiekuan('{$vo.id}')"><!-- 立即借款 -->pinjam uang</button>
+            </div>
+        </div>
+        {/volist}
+        
+
+        <!--申请无数据时-->
+        <div class="no-applied {if(!empty($products))}none{/if}"> <img src="__IMG__/longarrow.png">
+            <div class="center"> <span class="i-apply clear"> <i class="applied"></i> <span class="blue f16"><!-- 已申请 -->disetujui？</span> </span> </div>
+            <p class="gray"><!-- 确认后将显示在此，方便日后管理 -->Diperlihatkan disini setelah di konfirmasi.</p>
+        </div>
+    </div>
+    <!--loading-->
+    <div class="loading center none" id="loading"> <img src="__IMG__/loading2.gif"> <!-- 一大波口子在路上... -->Lebih banyak aplikasi kedepannya </div>
+</div>
+
+<input type="hidden" class="list-refresh-msg" value="">
+<input type="hidden" id="hide_is_data" value="0">
+<input type="hidden" id="hide_is_apply_data" value="1">
+<input type="hidden" id="hide_page" value="{$page}">
+<input type="hidden" id="hide_apply_page" value="1">
+<input type="hidden" id="protype" value="{$type}">
+<form action="" method="post" class="none" id="postIndex">
+    <input type="hidden" name="protype" id="post_protype">
+    <input type="hidden" name="url" id="post_url">
+</form>
+<script>
+    if ($('.download-state').hasClass('none')) {
+        $('.main').removeClass('mt90');
+    } else {
+        $('.main').addClass('mt90');
+    }
+    $('.download-state .close').click(function () {
+        $('.download-state').remove();
+        $('.main').removeClass('mt90');
+    });
+    $(window).scroll(function () {
+        var top = $(window).scrollTop();
+        if ($('.download-state').length > 0) {
+            if (top > 1) {
+                $('.main').removeClass('mt90');
+                $('.download-state').css('position', 'static');
+            } else {
+                $('.main').addClass('mt90');
+                $('.download-state').css('position', 'fixed');
+            }
+        }
+    });
+    var mySwiper = new Swiper('.swiper-container', {
+        lazyLoading: true,
+        autoplay: 3000,
+        lazyLoadingOnTransitionStart: true,
+        slidesPerView: 'auto',
+        spaceBetween: 30
+    });
+</script> 
+<script type="text/javascript" src="__JS__/index.js"></script>
+<script type="text/javascript" src="__JS__/openapp.js"></script>
+{include file="mobile@public/foot"}

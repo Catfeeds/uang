@@ -1,0 +1,8 @@
+runtime/*
+zip/*
+config/database.php
+public/qr
+public/upload/*
+public/static/upload/*
+yongqian.mwb
+yongqian.mwb.bak

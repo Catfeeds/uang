@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Uangmart - kami bantu pinjamkan uang</title><!-- 桃来网-急用钱找桃来网 -->
+    <meta name="keywords" content="Uangmart, Pinjaman Uang" />
+    <meta name="description" content="Uangmart adalah platfrom profesional yang dapat membantu anda menemukan pinjaman dengan mudah dan aman." />
+    <link href="__CSS__/common.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__/pc_main.css" rel="stylesheet" type="text/css" />
+    <script src="__COM_JS__/jquery.min.js"></script>
+    <script src="__COM_JS__/jquery.cookie.js"></script>
+    <script src="__COM_JS__/layui/layui.all.js"></script>
+</head>
+
+<body>
+    <!--头部-->
+    <div class="banner-bg">
+        <div class="top">
+            <!-- 用户信息 -->
+            <div class="usertop">
+                <div class="ut-info ">
+                    <div class="welcome fl"><!-- Hi，欢迎加入 -->Hai, Selamat datang di <a href="/"><!-- 桃来网 -->Uangmart</a></div>
+                    {if (!empty($user))}
+                    <span class="username">{$user.name}</span>
+                    <a href="/loginOut"><button class="loginout"><!-- 退出 -->keluar</button></a>
+                    {else /}
+                    <button class="login login_button_mima"><!-- 登陆 -->login</button>
+                    <button class="reg login_button_reg"><!-- 注册 -->Daftar Baru</button>
+                    {/if}
+                </div>
+            </div>
+            <!-- 用户信息end -->
+            <div class="d-top">
+                <a href="/">
+                        <i class="logo">
+                            <img src="__PIC__/p_portrait.png" />
+                        </i>
+                        <div class="title">
+                            <div class="t"><!-- 桃来网 -->Uangmart</div>
+                            <div class="f14">uangmart.com</div>
+                        </div>
+                    </a>
+                <div class="pc-tabber">
+                    <table>
+                        <tr>
+                            <td {if (request()->controller()=='Index')}class="cur"{/if}><a href="/"><span><!-- 首页 -->beranda</span></a></td>
+                            <td {if (in_array(request()->controller(),['Product','Institution']))}class="cur"{/if}><a href="/borrow/0-0-0-0"><span><!-- 我要借款 -->pinjam uang</span></a></td>
+                            <!-- <td {if (request()->controller()=='News')}class="cur"{/if}><a href="/news"><span>借款攻略</span></a></td> -->
+                            <!-- <td {if (request()->controller()=='Bbs')}class="cur"{/if}><a href="/bbs" target="_blank"><span>论坛</span></a></td> -->
+                        </tr>
+                    </table>
+                </div>
+                <img class="logo-text fr" src="__PIC__/text.png" />
+            </div>
+        </div>

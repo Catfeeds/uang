@@ -16,6 +16,7 @@ class Base extends BaseController
 {
     public function __construct()
     {
+        ini_set('session.save_path', 'tmp');
         parent::__construct();
         if(empty(session('username'))){
 

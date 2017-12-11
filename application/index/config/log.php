@@ -12,11 +12,12 @@
 // +----------------------------------------------------------------------
 // | 日志设置
 // +----------------------------------------------------------------------
+use think\facade\Env;
 return [
     // 日志记录方式，内置 file socket 支持扩展
-    'type'  => 'test',
+    'type'  => 'File',
     // 日志保存目录
-    'path'  => '',
+    'path'  => Env::get('RUNTIME_PATH').'log'.DIRECTORY_SEPARATOR.'index'.DIRECTORY_SEPARATOR,
     // 日志记录级别
     'level' => ['error'],
 ];

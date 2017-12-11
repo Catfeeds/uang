@@ -4,13 +4,14 @@ namespace app\index\controller;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\LabelAlignment;
-
 use \Yunpian\Sdk\YunpianClient;
+use think\facade\Env;
 class TestController extends Base
 {
     public function index()
     {
-      	
+        dump(Env::get('LOG_PATH'));
+        dump(Env::get('RUNTIME_PATH'));
     }
     public function test()
     {

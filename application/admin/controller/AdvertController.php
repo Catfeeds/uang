@@ -99,7 +99,8 @@ class AdvertController extends Base
         $id = input('param.id');
 
         $advert = new AdvertModel();
-        $flag = $advert->delAdvert($id);
+        $advert = $advert->where('id',$id)->find();
+        $flag = $advert->delAdvert();
         return json(msg($flag['code'], $flag['data'], $flag['msg']));
     }
 

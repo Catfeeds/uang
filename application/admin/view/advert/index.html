@@ -121,7 +121,8 @@
             //do something
             $.getJSON("{:url('advert/advertDel')}", {'id' : id}, function(res){
                 if(1 == res.code){
-                    layer.alert(res.msg, {title: '友情提示', icon: 1, closeBtn: 0}, function(){
+                    layer.alert(res.msg, {title: '友情提示', icon: 1, closeBtn: 0}, function(index1){
+                        layer.close(index1);
                         initTable();
                     });
                 }else if(111 == res.code){

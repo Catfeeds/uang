@@ -4,7 +4,7 @@ namespace app\admin\model;
 class AdvertModel extends \app\common\model\AdvertModel
 {
 	/**
-     * 查询分类
+     * 查询广告
      * @param $where
      * @param $offset
      * @param $limit
@@ -15,7 +15,7 @@ class AdvertModel extends \app\common\model\AdvertModel
     }
 
     /**
-     * 根据搜索条件获取所有的分类数量
+     * 根据搜索条件获取所有的广告数量
      * @param $where
      */
     public function getAllAdverts($where)
@@ -24,7 +24,7 @@ class AdvertModel extends \app\common\model\AdvertModel
     }
 
     /**
-     * 编辑分类信息
+     * 编辑广告信息
      * @param $param
      */
     public function editAdvert($param)
@@ -38,7 +38,7 @@ class AdvertModel extends \app\common\model\AdvertModel
                 return msg(-1, '', $this->getError());
             }else{
 
-                return msg(1, url('advert/index'), '编辑分类成功');
+                return msg(1, url('advert/index'), '编辑广告成功');
             }
         }catch(\Exception $e){
             return msg(-2, '', $e->getMessage());
@@ -46,15 +46,15 @@ class AdvertModel extends \app\common\model\AdvertModel
     }
 
     /**
-     * 删除分类
+     * 删除广告
      * @param $id
      */
-    public function delAdvert($id)
+    public function delAdvert()
     {
         try{
-
-            $this->where('id', $id)->delete();
-            return msg(1, '', '删除分类成功');
+            unlink(getcwd().$this->img);
+            $this->delete();
+            return msg(1, '', '删除广告成功');
 
         }catch(\Exception $e){
             return msg(-1, '', $e->getMessage());

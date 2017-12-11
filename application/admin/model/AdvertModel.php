@@ -52,7 +52,7 @@ class AdvertModel extends \app\common\model\AdvertModel
     public function delAdvert()
     {
         try{
-            unlink(getcwd().$this->img);
+            @unlink(getcwd().$this->img);
             $this->delete();
             return msg(1, '', '删除广告成功');
 

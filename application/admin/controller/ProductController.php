@@ -122,7 +122,7 @@ class ProductController extends Base
             } catch (\Exception $e) {
                 // 回滚事务
                 Db::rollback();
-                $this->error($e->getMessage());
+                $this->error('更新失败');
             }
         }
 

@@ -12,6 +12,7 @@ class TestController extends Base
     {
         dump(Env::get('LOG_PATH'));
         dump(Env::get('RUNTIME_PATH'));
+        dump(date('Y-m-d H:i:s'));
     }
     public function test()
     {

@@ -125,7 +125,7 @@
                 success: function (msg) {
                     var code = msg.code;
                     if (code == "1") {
-                        dialog.alert('');
+                        dialog.alert(msg.msg);
                         // dialog.alert('注册成功！');
                         setTimeout("window.location.href = '/'", 500);
                     }else{

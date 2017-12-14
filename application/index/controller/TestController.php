@@ -10,6 +10,7 @@ class TestController extends Base
 {
     public function index()
     {
+        dump(request());
         dump(Env::get('LOG_PATH'));
         dump(Env::get('RUNTIME_PATH'));
         dump(date('Y-m-d H:i:s'));

@@ -29,7 +29,7 @@ table{border-collapse: collapse;}
     text-align: center;
     position: relative;
 }
-.back{
+.u_back{
     position: absolute;
     left: 0;
     display: inline-block;

@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$new.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($new['money_min'])}-{:number_format($new['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
                                         <span class="red">{$new.time_limit}</span>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$fast.money_limit}</span> <!-- 借款期限 waktu jatuh tempo-->：
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($fast['money_min'])}-{:number_format($fast['money_max'])}</span> <!-- 借款期限 waktu jatuh tempo-->：
                                         <span class="red">{$fast.time_limit}</span>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{$profession.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($profession['money_min'])}-{:number_format($profession['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
                                         <span class="red">{$profession.time_limit}</span>
                                     </div>
                                 </div>

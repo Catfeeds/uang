@@ -1,7 +1,7 @@
 <?php
 //配置文件
 return [
-	'money_limit' => array('Tidak terbatas','500-1000','1000-3000','3000-5000','5000-10000','10000+'),		// 借款额度
+	'money_limit' => array('Tidak terbatas','1-2000000','2000001-5000000','5000000-more'),		// 借款额度
 	'time_limit'  => array('Tidak terbatas','15 hari','1 bulan','1-3 bulan','3-6bulan','6-12bulan','lebih dari 1 tahun'),// 借款限期
 	'profession'  => array('Tidak terbatas','karyawan','bisnis perorangan','pelajar'),										// 职业身份
 	'is_new'	  => array('Tidak terbatas','iya','tidak'),	

@@ -13,7 +13,7 @@ class IndexController extends Base
     	// 新口子
     	$product = new ProductModel();
     	$data['news'] = $product
-            ->field('id,name,title,logo,money_rate,money_limit,time_limit')
+            ->field('id,name,title,logo,money_rate,money_limit,money_min,money_max,time_limit')
             ->where('is_new',1)
             ->order('id desc')
             ->limit(4)
@@ -24,7 +24,7 @@ class IndexController extends Base
         }
     	// 放款快
         $data['fasts'] = $product
-            ->field('id,name,title,logo,money_rate,money_limit,time_limit')
+            ->field('id,name,title,logo,money_rate,money_limit,money_min,money_max,time_limit')
             ->where('id','not in',$ids)
             ->order('id desc')
             ->limit(4)
@@ -34,7 +34,7 @@ class IndexController extends Base
         }
     	// 职业
         $data['professions'] = $product
-            ->field('id,name,title,logo,money_rate,money_limit,time_limit')
+            ->field('id,name,title,logo,money_rate,money_limit,money_min,money_max,time_limit')
             ->where('id','not in',$ids)
             ->order('id desc')
             ->limit(4)
@@ -42,7 +42,7 @@ class IndexController extends Base
         $dic = config('dic.');
         foreach ($data as $k => $v) {
         	foreach ($v as $kk => $vv) {
-        		$data[$k][$kk]['money_limit'] = $dic['money_limit'][$vv['money_limit']];
+        		$data[$k][$kk]['money_limit'] = $vv['money_min'].'-'.$vv['money_max'];
             	$data[$k][$kk]['time_limit'] = $dic['time_limit'][$vv['time_limit']];
         	}
         }

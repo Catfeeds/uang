@@ -666,7 +666,7 @@ body{
 .term-type ul{width: 500%;}
 .term-type li{
     float: left;
-    width: 110px;
+    width: 130px;
 }
 .term-type li.cur a{color: #F98D5C;}
 

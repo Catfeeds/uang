@@ -57,7 +57,7 @@
                             <div class="tit ml15">
                                 <span>{$product.name}</span>
                                 <div class="rate">
-                                    <!-- 额度范围 -->lini kredit：<span class="red mr20 f14">{$product.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                    <!-- 额度范围 -->lini kredit：<span class="red mr20 f14">{:number_format($product['money_min'])}-{:number_format($product['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
                                     <span class="red f14">{$product.time_limit}</span>
                                 </div>
                                 <div class="rate-abs f14"><span class="red f24 mr0">{$product.money_rate}%</span>

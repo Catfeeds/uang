@@ -32,7 +32,7 @@ class IndexController extends Base
                 });
                 break;
         }
-        $products = $model->field('id,name,title,money_rate,money_limit,time_limit,jump_url')
+        $products = $model->field('id,name,title,money_rate,money_limit,money_min,money_max,time_limit,jump_url')
             ->where('status',1)
             ->withCount('comments')
             ->with(['apply'=>function($query) use ($uid){
@@ -45,24 +45,6 @@ class IndexController extends Base
             ->toArray();
         $dic = config('dic.');
         foreach ($products as &$v) {
-            switch ($v['money_limit']) {
-                case '1':
-                    $v['money_max'] = 1000;
-                    break;
-                case '2':
-                    $v['money_max'] = 3000;
-                    break;
-                case '3':
-                    $v['money_max'] = 5000;
-                    break;
-                case '4':
-                    $v['money_max'] = 10000;
-                    break;
-                case '5':
-                    $v['money_max'] = '10000+';
-                    break;
-            }
-            $v['money_limit'] = $dic['money_limit'][$v['money_limit']];
             $v['time_limit'] = $dic['time_limit'][$v['time_limit']];
         }
         if (request()->isAjax()) {
@@ -82,7 +64,7 @@ class IndexController extends Base
         $model = new ProductModel();
         $info = $model->withCount('comments')->find($id);
         $dic = config('dic.');
-        $info['money_limit'] = $dic['money_limit'][$info['money_limit']];
+        $info['money_limit'] = $info['money_min'].'-'.$info['money_max'];
         $info['time_limit'] = $dic['time_limit'][$info['time_limit']];
         $this->assign('info',$info);
         return $this->fetch();

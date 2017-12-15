@@ -10,7 +10,7 @@
                             <div class="tit">
                                 <span>{$info.name}</span> {$info.title} </div>
                             <div class="rate">
-                                <!-- 额度范围 -->lini kredit：<span class="red mr20">{$info.money_limit}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($info['money_min'])}-{:number_format($info['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
                                 <span class="red">{$info.time_limit}</span>
                             </div>
                         </div>

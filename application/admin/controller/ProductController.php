@@ -106,7 +106,7 @@ class ProductController extends Base
             try {
 
                 $product->data($param);
-                if(!$product->save()){
+                if($product->save()===false){
                     Db::rollback();
                     $this->error('修改失败');
                 }
@@ -122,7 +122,7 @@ class ProductController extends Base
             } catch (\Exception $e) {
                 // 回滚事务
                 Db::rollback();
-                $this->error($e->getMessage());
+                $this->error('修改失败');
             }
         }
 

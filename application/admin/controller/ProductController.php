@@ -47,6 +47,11 @@ class ProductController extends Base
             $param = input('post.');
 
             unset($param['file']);
+            // 换行处理
+            empty($param['requirement'])?'':$param['requirement'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['requirement']);
+            empty($param['data'])?'':$param['data'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['data']);
+            empty($param['verify'])?'':$param['verify'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['verify']);
+            empty($param['desc'])?'':$param['desc'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['desc']);
 
             $result = $this->validate($param, 'Product');
             if(true !== $result){
@@ -94,7 +99,11 @@ class ProductController extends Base
         if(request()->isPost()){
             $param = input('post.');
             unset($param['file']);
-
+            // 换行处理
+            empty($param['requirement'])?'':$param['requirement'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['requirement']);
+            empty($param['data'])?'':$param['data'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['data']);
+            empty($param['verify'])?'':$param['verify'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['verify']);
+            empty($param['desc'])?'':$param['desc'] = str_replace(array("\r\n", "\n", "\r"), '<br />', $param['desc']);
             // dump($param);die;
             $result = $this->validate($param, 'Product');
             if(true !== $result){
@@ -131,6 +140,11 @@ class ProductController extends Base
             $tags[] = $tag['tag_name'];
         }
         $product->tags = implode(',', $tags);
+        // 换行符转换
+        $product->requirement = str_replace('<br />', PHP_EOL, $product->requirement);
+        $product->data = str_replace('<br />', PHP_EOL, $product->data);
+        $product->verify = str_replace('<br />', PHP_EOL, $product->verify);
+        $product->desc = str_replace('<br />', PHP_EOL, $product->desc);
         $this->assign([
             'product' => $product->toArray()
         ]);

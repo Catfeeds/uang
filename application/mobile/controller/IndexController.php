@@ -7,30 +7,21 @@ class IndexController extends Base
 {
     public function index()
     {
-        $type = input('type');
-        $page = input('page');
-        if (!$page) $page = 1;
+        $type = input('type',0,'intval');
+        $page = input('page',1,'intval');
         $uid = empty($this->user)?0:$this->user->id;
         // 数据
+        $dic_type = [
+            1 => 'Bunga kecil',
+            2 => 'Pinjaman Besar',
+            3 => 'Proses Cepat'
+        ];
         $model = new ProductModel();
-        switch ($type) {
-            case '1':
-                $model = $model->where('is_new',1);
-                break;
-            case '2':
-                // 是否登陆
-                if(!empty($this->user)){
-                    $model = $model->where('id', 'NOT IN', function ($query) use ($uid) {
-                        $query->table('apply')->where('uid', $uid)->field('product_id');
-                    });
-                }
-                break;
-
-            case '3':
-                $model = $model->where('id', 'IN', function ($query) use ($uid) {
-                    $query->table('apply')->where('uid', $uid)->field('product_id');
-                });
-                break;
+        if ($type && isset($dic_type[$type])) {
+            $tag_name = $dic_type[$type];
+            $model = $model->where('id', 'IN', function ($query) use ($tag_name) {
+                $query->table('product_tag')->where('tag_name', $tag_name)->field('product_id');
+            });
         }
         $products = $model->field('id,name,title,money_rate,money_limit,money_min,money_max,time_limit,jump_url')
             ->where('status',1)

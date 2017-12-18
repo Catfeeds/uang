@@ -3,32 +3,32 @@ namespace ynsms;
 
 class Ynsms 
 {
-	private static $urlserver = 'http://45.32.107.195/sms/api_sms_otp_send_json.php'; // url server sms 
-	public static $senderid = 0; // Option senderid 0=Sms Long Number / 1=Sms Masking/Custome Senderid
+	private $urlserver = 'http://45.32.107.195/sms/api_sms_otp_send_json.php'; // url server sms 
+	public $senderid = 0; // Option senderid 0=Sms Long Number / 1=Sms Masking/Custome Senderid
 
 	public function __construct($apikey,$callbackurl) {
 		ob_start();
-        self::$apikey  		= $apikey;
-        self::$callbackurl  = $callbackurl;
+        $this->$apikey  		= $apikey;
+        $this->$callbackurl  = $callbackurl;
     }
-    public static function send($number,$message)
+    public function send($number,$message)
     {
         $senddata = array(
-			'apikey' => self::$apikey,  
-			'callbackurl' => self::$callbackurl, 
-			'senderid' => self::$senderid, 
+			'apikey' => $this->$apikey,  
+			'callbackurl' => $this->$callbackurl, 
+			'senderid' => $this->$senderid, 
 			'datapacket'=>array(
 				'number'  => $number,
 				'message' => $message
 				)
 		);
-        return self::post_request($senddata);
+        return $this->post_request($senddata);
     }
 
-    private static function post_request($senddata)
+    private function post_request($senddata)
     {
     	$data=json_encode($senddata);
-		$curlHandle = curl_init(self::$urlserver);
+		$curlHandle = curl_init($this->$urlserver);
 		curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);

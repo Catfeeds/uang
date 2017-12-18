@@ -78,31 +78,77 @@ class TestController extends Base
         // send_reg_sms($phone,$code);
 
     }
-    public function sendyunpian($phone,$code)
+    public function sendyunpian()
     {
-        send_reg_sms($phone,$code);
+        $data = [
+            "apikey"=>"30f000961bec9e51c5bf9b6a8fc62aed",
+            "callbackurl"=>"http://uangmart.com/common/sms/callback",
+            "senderid"=>0,
+            "datapacket"=>[
+                "number"=>"8618354001201",
+                "message"=>"[Uang mart] your code is 2740"
+            ]
+        ];
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 
-    public function sendjson($json = '')
+    public function sendjson()
     {
-        $data=$json;
-        $curlHandle = curl_init('http://45.32.107.195/sms/api_sms_otp_balance_json.php');
-        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json',
-                    'Content-Length: ' . strlen($data))
-        );
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 5);
-        curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 5);
-        $respon = curl_exec($curlHandle);
-
-        $curl_errno = curl_errno($curlHandle);
-        $curl_error = curl_error($curlHandle);  
-        $http_code  = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
-        curl_close($curlHandle);
+        $data = [
+            "apikey"=>"30f000961bec9e51c5bf9b6a8fc62aed",
+            "callbackurl"=>"http://uangmart.com/common/sms/callback",
+            "senderid"=>0,
+            "datapacket"=>[
+                "number"=>"8618354001201",
+                "message"=>"[Uang mart] your code is 2740"
+            ]
+        ];
+        $respon = $this->curlHtml($this->urlserver,'json',$data);
+        if (!$respon) {
+            $senddatax = array(
+            'sending_respon'=>array(
+                'globalstatus' => 90, 
+                'globalstatustext' => $curl_errno."|".$http_code)
+            );
+            $respon=json_encode($senddatax);
+        }
         return $respon;
     }
+
+    protected function curlHtml($url, $method = 'GET', $data = array())
+    {
+        if(!function_exists('curl_init')) exit('Need to open the curl extension');
+        $method = strtoupper($method);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        switch ($method){
+            case 'POST':
+                curl_setopt($ch, CURLOPT_POST, TRUE);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+                break;
+            case 'GET':
+                break;
+            case 'JSON':
+                $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: '.strlen($data)));
+                break;
+        }
+        $return = curl_exec( $ch );
+        $errorCode = curl_errno($ch);
+        curl_close ( $ch );
+        if(0 !== $errorCode) {
+            return false;
+        }
+        return $return;
+    }
+
 }

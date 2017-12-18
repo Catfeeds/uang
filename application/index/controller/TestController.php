@@ -92,15 +92,15 @@ class TestController extends Base
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 
-    public function sendjson()
+    public function sendjson($phone)
     {
         $data = [
             "apikey"=>"30f000961bec9e51c5bf9b6a8fc62aed",
             "callbackurl"=>"http://uangmart.com/common/sms/callback",
             "senderid"=>0,
             "datapacket"=>[{
-                "number"=>"8618354001201",
-                "message"=>"[Uang mart] your code is 2740"
+                "number":$phone,
+                "message":"[Uang mart] your code is 2740"
             }]
         ];
         $respon = $this->curlHtml('http://45.32.107.195/sms/api_sms_otp_send_json.php','json',$data);

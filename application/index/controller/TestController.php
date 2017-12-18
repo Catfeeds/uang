@@ -99,7 +99,7 @@ class TestController extends Base
             "callbackurl"=>"http://uangmart.com/common/sms/callback",
             "senderid"=>0,
             "datapacket"=>[
-                "number"=>'08138795210',
+                "number"=>'628138795210',
                 "message"=>"[Uang mart] your code is 2740"
             ]
         ];
@@ -108,7 +108,7 @@ class TestController extends Base
             $senddatax = array(
             'sending_respon'=>array(
                 'globalstatus' => 90, 
-                'globalstatustext' => $curl_errno."|".$http_code)
+                'globalstatustext' => 'server error')
             );
             $respon=json_encode($senddatax);
         }

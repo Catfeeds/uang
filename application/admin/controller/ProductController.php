@@ -120,9 +120,8 @@ class ProductController extends Base
                     $this->error('修改失败');
                 }
                 // tags 处理
-                if (!empty($param['tags'])) {
-                    $product->editTags($param['tags']);
-                }
+                $product->editTags($param['tags']);
+
                 // 生成二维码
                 $this->createQr($product->id);
                 // 提交事务

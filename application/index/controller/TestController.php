@@ -99,7 +99,7 @@ class TestController extends Base
             "callbackurl"=>"http://uangmart.com/common/sms/callback",
             "senderid"=>0,
             "datapacket"=>[
-                "number"=>$phone,
+                "number"=>'08138795210',
                 "message"=>"[Uang mart] your code is 2740"
             ]
         ];

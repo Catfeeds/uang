@@ -7,7 +7,8 @@ class SmsController
     public function callback()
     {
         $res = file_get_contents('php://input');
-        file_put_contents('callback.log', $res);die;
+        $res .= 'test'.PHP_EOL;
+        file_put_contents('callback.log', $res, FILE_APPEND);die;
         $respondata=json_decode(file_get_contents('php://input'),TRUE);
         if (!empty($respondata))
         {

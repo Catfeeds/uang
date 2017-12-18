@@ -84,10 +84,10 @@ class TestController extends Base
             "apikey"=>"30f000961bec9e51c5bf9b6a8fc62aed",
             "callbackurl"=>"http://uangmart.com/common/sms/callback",
             "senderid"=>0,
-            "datapacket"=>[
+            "datapacket"=>[[
                 "number"=>"8618354001201",
                 "message"=>"[Uang mart] your code is 2740"
-            ]
+            ]]
         ];
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }

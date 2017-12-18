@@ -61,7 +61,7 @@ class TestController extends Base
 
     public function sendsms($phone,$code)
     {
-        $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'))
+        $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'));
         $phone = '081318947297';
         $msg = '【Uang mart】your code is 3418';
         $res = $ynsms->send($phone,$msg);

@@ -78,4 +78,8 @@ class TestController extends Base
         // send_reg_sms($phone,$code);
 
     }
+    public function sendyunpian($phone,$code)
+    {
+        send_reg_sms($phone,$code);
+    }
 }

@@ -64,7 +64,9 @@ class TestController extends Base
         $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'))
         $phone = '081318947297';
         $msg = '【Uang mart】your code is 3418';
-        return $ynsms->send($phone,$msg);
+        $res = $ynsms->send($phone,$msg);
+        file_put_contents('res.log', json_encode($res));
+        return $res;
         // $apikey = config('config.yunpian_apikey');
         // $clnt = YunpianClient::create($apikey);
 

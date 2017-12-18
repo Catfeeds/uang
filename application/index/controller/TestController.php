@@ -10,6 +10,7 @@ class TestController extends Base
 {
     public function index()
     {
+        phpinfo();
         dump(request());
         dump(Env::get('LOG_PATH'));
         dump(Env::get('RUNTIME_PATH'));
@@ -59,7 +60,7 @@ class TestController extends Base
         $qrCode->writeFile('./qr/qrcode.png');
     }
 
-    public function sendsms($phone,$code)
+    public function sendsms()
     {
         $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'));
         $phone = '081318947297';

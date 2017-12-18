@@ -19,5 +19,5 @@ return [
     // 日志保存目录
     'path'  => Env::get('RUNTIME_PATH').'log'.DIRECTORY_SEPARATOR.'index'.DIRECTORY_SEPARATOR,
     // 日志记录级别
-    'level' => ['error'],
+    'level' => [],
 ];

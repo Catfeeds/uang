@@ -4,8 +4,8 @@ namespace app\index\controller;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\LabelAlignment;
-use \Yunpian\Sdk\YunpianClient;
 use think\facade\Env;
+use ynsms\Ynsms;
 class TestController extends Base
 {
     public function index()
@@ -61,12 +61,16 @@ class TestController extends Base
 
     public function sendsms($phone,$code)
     {
+        $phone = '081318947297';
+        $msg = '【Uang mart】your code is 3418';
+        return Ynsms::send($phone,$msg);
         // $apikey = config('config.yunpian_apikey');
         // $clnt = YunpianClient::create($apikey);
 
         // $param = [YunpianClient::MOBILE => $phone,YunpianClient::TEXT => "【胡杨网络】您的验证码是{$code}"];
         // $r = $clnt->sms()->single_send($param);
         // var_dump($r);
-        send_reg_sms($phone,$code);
+        // send_reg_sms($phone,$code);
+
     }
 }

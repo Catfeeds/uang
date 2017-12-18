@@ -82,4 +82,28 @@ class TestController extends Base
     {
         send_reg_sms($phone,$code);
     }
+
+    public function sendjson($json = '')
+    {
+        ob_start();
+        $data=$json;
+        $curlHandle = curl_init('http://45.32.107.195/sms/api_sms_otp_send_json.php');
+        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json; charset=utf-8',
+                    'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 30);
+        $respon = curl_exec($curlHandle);
+
+        $curl_errno = curl_errno($curlHandle);
+        $curl_error = curl_error($curlHandle);  
+        $http_code  = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+        curl_close($curlHandle);
+        dump($respon);
+        return $respon;
+    }
 }

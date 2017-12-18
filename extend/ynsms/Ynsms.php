@@ -9,7 +9,6 @@ class Ynsms
 	public $callbackurl; 
 
 	public function __construct($apikey,$callbackurl) {
-		ob_start();
         $this->apikey  		= $apikey;
         $this->callbackurl  = $callbackurl;
     }
@@ -29,13 +28,14 @@ class Ynsms
 
     private function post_request($senddata)
     {
+		ob_start();
     	$data=json_encode($senddata);
 		$curlHandle = curl_init($this->urlserver);
 		curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
-					'Content-Type: application/json',
+					'Content-Type: application/json; charset=utf-8',
 					'Content-Length: ' . strlen($data))
 		);
 		curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);

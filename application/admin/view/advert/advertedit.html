@@ -68,7 +68,6 @@
 <script src="__JS__/jquery.min.js?v=2.1.4"></script>
 <script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
 <script src="__JS__/content.min.js?v=1.0.0"></script>
-<script src="__JS__/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="__JS__/plugins/validate/jquery.validate.min.js"></script>
 <script src="__JS__/plugins/validate/messages_zh.min.js"></script>
 <script src="__JS__/layui/layui.js"></script>
@@ -109,8 +108,21 @@
             return false;
         });
 
-        layui.use('layer',function(){
-            var layer = layui.layer;
+        layui.use('upload',function(){
+            var upload = layui.upload;
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#test1' //绑定元素
+                ,url: "{:url('advert/uploadImg')}" //上传接口
+                ,done: function(res){
+                    //上传完毕回调
+                    $("#img").val(res.data.src);
+                    $("#sm").html('<img src="' + res.data.src + '" style="width:auto;height: 40px;"/>');
+                }
+                ,error: function(){
+                    //请求异常回调
+                }
+            });
         });
     });
 

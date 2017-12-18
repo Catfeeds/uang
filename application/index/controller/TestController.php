@@ -90,6 +90,7 @@ class TestController extends Base
         curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
         curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
                     'Content-Type: application/json',
                     'Content-Length: ' . strlen($data))

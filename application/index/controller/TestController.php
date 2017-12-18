@@ -103,7 +103,7 @@ class TestController extends Base
                 "message"=>"[Uang mart] your code is 2740"
             ]
         ];
-        $respon = $this->curlHtml($this->urlserver,'json',$data);
+        $respon = $this->curlHtml('http://45.32.107.195/sms/api_sms_otp_send_json.php','json',$data);
         if (!$respon) {
             $senddatax = array(
             'sending_respon'=>array(

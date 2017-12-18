@@ -65,8 +65,8 @@ class TestController extends Base
         $phone = '081318947297';
         $msg = '【Uang mart】your code is 3418';
         $res = $ynsms->send($phone,$msg);
-        $res .= 'test' . PHP_EOL;
-        file_put_contents('res.log', $res, FILE_APPEND);
+        $_res = $res . 'test' . PHP_EOL;
+        file_put_contents('res.log', $_res, FILE_APPEND);
         return $res;
         // $apikey = config('config.yunpian_apikey');
         // $clnt = YunpianClient::create($apikey);

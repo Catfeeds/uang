@@ -7,6 +7,7 @@ class NewsController extends Base
 {
     function __construct(){
         parent::__construct();
+        $this->assign('dic',config('dic.'));
         $this->assign('related_products',getProducts());
     }
     public function index()

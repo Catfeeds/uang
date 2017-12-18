@@ -11,6 +11,7 @@ class CalculateController extends Base
             $par = ['5000','3','1.5'];
         }
         $this->assign('par',$par);
+        $this->assign('dic',config('dic.'));
         $this->assign('related_products',getProducts());
         $this->assign('coo_ins',getIns());
         return $this->fetch();

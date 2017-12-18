@@ -3,40 +3,32 @@
     <div class="search-block">
         <div class="cur" id='JigouSearch_type1'><!-- 借款金额 -->jumlah yang dipinjam</div>
         <ul>
-            <li data='0'><!-- 不限 -->Tidak terbatas</li>
-            <li data='1'>500-1000</li>
-            <li data='2'>1000-3000</li>
-            <li data='3'>3000-5000</li>
-            <li data='4'>5000-10000</li>
-            <li data='5'>10000<!-- 以上 -->kembali ke atas</li>
+            {volist name="dic['money_limit']" id="vo" key="k"}
+            <li data='{$k-1}'>{$vo}</li>
+            {/volist}
         </ul>
     </div>
     <div class="search-block">
         <div class="cur" id='JigouSearch_type2'><!-- 借款期限 -->waktu jatuh tempo</div>
         <ul>
-            <li data='0'><!-- 不限 -->tidak terbatas</li>
-            <li data='1'><!-- 15天内 -->dalam waktu 15 hari</li>
-            <li data='2'><!-- 1个月内 -->dalam waktu 1 bulan</li>
-            <li data='3'><!-- 1-3个月 -->1-3 bulan</li>
-            <li data='4'><!-- 3-6个月 -->3-6 bulan</li>
-            <li data='5'><!-- 6-12个月 -->6-12 bulan</li>
-            <li data='6'><!-- 1年以上 -->lebih dari 1 tahun</li>
+            {volist name="dic['time_limit']" id="vo" key="k"}
+            <li data='{$k-1}'>{$vo}</li>
+            {/volist}
         </ul>
     </div>
     <div class="search-block">
         <div class="cur" id='JigouSearch_type3'><!-- 职业身份 -->pekerjaan</div>
         <ul>
-            <li data='0'><!-- 不限 -->tidak terbatas</li>
-            <li data='1'><!-- 上班族 -->karyawan</li>
-            <li data='2'><!-- 个体户 -->bisnis perorangan</li>
-            <li data='3'><!-- 学生 -->pelajar</li>
+            {volist name="dic['profession']" id="vo" key="k"}
+            <li data='{$k-1}'>{$vo}</li>
+            {/volist}
         </ul>
     </div>
     <button class="submit-blue" id='JigouSearch'><!-- 搜一搜 -->pencarian</button>
 </div>
 <script>
     $(function() {
-        $('.search .cur').on('click', "", function() {
+        $('.search-block .cur').on('click', "", function() {
             var that = $(this);
             var display = $(this).parent().find('ul').css('display');
             if (display == 'none') {

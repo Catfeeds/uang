@@ -47,6 +47,7 @@ class InstitutionController extends Base
             ->order('id desc')
             ->select();
         $this->assign('info',$info);
+        $this->assign('dic',config('dic.'));//dump(config('dic.'));die;
         $this->assign('related_products',getProducts());
         return $this->fetch();
     }

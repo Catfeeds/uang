@@ -137,7 +137,7 @@ class TestController extends Base
                 break;
             case 'JSON':
                 $data = json_encode($data,JSON_UNESCAPED_UNICODE);
-                var_dump($data);die;
+                // var_dump($data);die;
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: '.strlen($data)));

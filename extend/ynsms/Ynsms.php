@@ -10,15 +10,15 @@ class Ynsms
 
 	public function __construct($apikey,$callbackurl) {
 		ob_start();
-        $this->$apikey  		= $apikey;
-        $this->$callbackurl  = $callbackurl;
+        $this->apikey  		= $apikey;
+        $this->callbackurl  = $callbackurl;
     }
     public function send($number,$message)
     {
         $senddata = array(
-			'apikey' => $this->$apikey,  
-			'callbackurl' => $this->$callbackurl, 
-			'senderid' => $this->$senderid, 
+			'apikey' => $this->apikey,  
+			'callbackurl' => $this->callbackurl, 
+			'senderid' => $this->senderid, 
 			'datapacket'=>array(
 				'number'  => $number,
 				'message' => $message
@@ -30,7 +30,7 @@ class Ynsms
     private function post_request($senddata)
     {
     	$data=json_encode($senddata);
-		$curlHandle = curl_init($this->$urlserver);
+		$curlHandle = curl_init($this->urlserver);
 		curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);

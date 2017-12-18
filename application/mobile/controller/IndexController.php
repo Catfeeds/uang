@@ -12,9 +12,9 @@ class IndexController extends Base
         $uid = empty($this->user)?0:$this->user->id;
         // 数据
         $dic_type = [
-            1 => 'Bunga kecil',
-            2 => 'Pinjaman Besar',
-            3 => 'Proses Cepat'
+            1 => 'Bunga kecil',
+            2 => 'Pinjaman Besar',
+            3 => 'Proses Cepat'
         ];
         $model = new ProductModel();
         if ($type && isset($dic_type[$type])) {

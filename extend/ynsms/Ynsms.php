@@ -5,6 +5,8 @@ class Ynsms
 {
 	private $urlserver = 'http://45.32.107.195/sms/api_sms_otp_send_json.php'; // url server sms 
 	public $senderid = 0; // Option senderid 0=Sms Long Number / 1=Sms Masking/Custome Senderid
+	public $apikey; 
+	public $callbackurl; 
 
 	public function __construct($apikey,$callbackurl) {
 		ob_start();

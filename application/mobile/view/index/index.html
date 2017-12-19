@@ -88,7 +88,7 @@
                     <button class="yes"><!-- 是，我注册过 -->Ya</button>
                     <button class="no"><!-- 不，我点错了 -->Tidak</button>
                 </div>
-                <button class="jiekuan-btn fr" onclick="Jiekuan('{$vo.id}')"><!-- 立即借款 -->Pinjam Uang</button>
+                <button class="jiekuan-btn fr" onclick="window.location.href = '/detail/{$vo.id}'"><!-- 立即借款 -->Pinjam Uang</button>
             </div>
         </div>
         {/volist}

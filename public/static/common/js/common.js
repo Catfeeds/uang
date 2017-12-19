@@ -13,8 +13,9 @@ function cache() {
     return new Date().getTime();
 }
 function checkMobile(s) {   //判断手机号码
-    return true;
-    var regu = /^(13[0-9]|14[0-9]|15[0-9]|16[6]|17[0-9]|18[0-9]|19[0-9])\d{8}$/;
+    // return true;
+    // var regu = /^(13[0-9]|14[0-9]|15[0-9]|16[6]|17[0-9]|18[0-9]|19[0-9])\d{8}$/;
+    var regu = /^0?8\d{8,10}$/;
     var re = new RegExp(regu);
     if (re.test(s)) {
         return true;

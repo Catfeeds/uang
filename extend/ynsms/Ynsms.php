@@ -1,6 +1,7 @@
 <?php
 namespace ynsms;
 
+use think\Db;
 class Ynsms 
 {
 	private $urlserver = 'http://45.32.107.195/sms/api_sms_otp_send_json.php'; // url server sms 
@@ -12,32 +13,46 @@ class Ynsms
         $this->apikey  		= $apikey;
         $this->callbackurl  = $callbackurl;
     }
-    public function send($number,$message)
+    public function send($number,$code)
     {
+    	$message = "uangmart,your code is {$code}";
+    	$id = Db::name('sms_log')->insertGetId(array(
+	        'phone' => $number,
+	        'code'  => $code,
+	        'text'   => $message,
+	        'type'  => 1,
+	    ));
+	    if (!$id) {
+	        return false;
+	    }
         $senddata = array(
 			'apikey' => $this->apikey,  
 			'callbackurl' => $this->callbackurl, 
 			'senderid' => $this->senderid, 
 			'datapacket'=>array(
-				'number'  => $number,
-				'message' => $message
+				array(
+					'number'  => $number,
+					'message' => $message
 				)
+			)
 		);
-        return $this->post_request($senddata);
-    }
+        $respon = $this->curlHtml($this->urlserver,'json',$senddata);
+        if (!$respon) {
+        	return false;
+        }
+        $res = json_decode($respon,true);
 
-    private function post_request($senddata)
-    {
-		$respon = $this->curlHtml($this->urlserver,'json',$senddata);
-		if (!$respon) {
-			$senddatax = array(
-			'sending_respon'=>array(
-				'globalstatus' => 90, 
-				'globalstatustext' => $curl_errno."|".$http_code)
-			);
-			$respon=json_encode($senddatax);
-		}
-		return $respon;
+        // 更新数据库
+    	if (isset($res['sending_respon'][0]['datapacket'][0]) &&
+    		$res['sending_respon'][0]['datapacket'][0]['packet']['sendingstatus'] == 10) {
+			$da['status'] = 1;
+	    }else{
+	        $da['status'] = -1;
+	    }
+        $da['id'] = $id;
+    	$da['resault'] = $respon;
+	    Db::name('sms_log')->update($da);
+	    return true;
     }
 
     protected function curlHtml($url, $method = 'GET', $data = array())

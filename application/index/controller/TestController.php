@@ -60,10 +60,10 @@ class TestController extends Base
         $qrCode->writeFile('./qr/qrcode.png');
     }
 
-    public function sendsms()
+    public function sendsms($phone)
     {
         $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'));
-        $phone = '081318947297';
+        $phone = $phone;
         $msg = '【Uang mart】your code is 3418';
         $res = $ynsms->send($phone,$msg);
         $_res = $res . 'test' . PHP_EOL;

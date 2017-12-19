@@ -343,7 +343,7 @@
     vertical-align: -4px;
 }
 .infor .count{
-    font-size: 24px;
+    font-size: 20px;
     height: 36px;
     line-height: 36px;
 }
@@ -681,12 +681,13 @@ overflow: hidden;}
     color: #666666;
 }
 .gs .info>.gray,.gs .info .cou{
-    width: 50%;
-    float: left;
+    /*width: 50%;
+    float: left;*/
+    font-size: 12px;
     line-height: 30px;
 }
 .gs .info .gray input{
-    width: 50px;
+    width: 110px;
     font-size: 16px;
     text-align: center;
     height: 30px;
@@ -694,7 +695,7 @@ overflow: hidden;}
     border: 1px solid #f26527;
     border-radius: 5px;
 }
-.gs .info:last-child{height: 130px;}
+.gs .info:last-child{height: 160px;}
 .gs .info:last-child .cou .gray{width: 45px;}
 .info .tit>red,.gs .info .tit>.gray{
     line-height: 30px;

@@ -36,6 +36,7 @@ class IndexController extends Base
             ->toArray();
         $dic = config('dic.');
         foreach ($products as &$v) {
+            $v['money_max'] = number_format($v['money_max']);
             $v['time_limit'] = $dic['time_limit'][$v['time_limit']];
         }
         if (request()->isAjax()) {
@@ -55,7 +56,7 @@ class IndexController extends Base
         $model = new ProductModel();
         $info = $model->withCount('comments')->find($id);
         $dic = config('dic.');
-        $info['money_limit'] = $info['money_min'].'-'.$info['money_max'];
+        $info['money_limit'] = number_format($info['money_min']).'-'.number_format($info['money_max']);
         $info['time_limit'] = $dic['time_limit'][$info['time_limit']];
         $this->assign('info',$info);
         return $this->fetch();

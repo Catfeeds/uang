@@ -21,22 +21,22 @@
         </div>
         <div class="w1000 none">
             <div class="apply-form" {if (!empty($user))}style="display: none;"{/if}>
-                <div class="tit"><!-- 立即申请借款 -->setuju untuk meminjam uang</div>
+                <div class="tit"><!-- 立即申请借款 -->Setuju untuk meminjam uang</div>
                 <div class="af-in"><!-- 请输入手机号 -->
-                    <input type="text" placeholder="masukkan nomor ponsel" id="guanjia_mobile_1" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" value="18354001201" />
+                    <input type="text" placeholder="Masukkan nomor ponsel" id="guanjia_mobile_1" maxlength="11" onkeyup="this.value = this.value.replace(/\D/g, '')" value="18354001201" />
                 </div>
                 <div class="af-in">
-                    <input type="password" id="guanjia_pwd_1" placeholder="masukkan kata sandi" /><!-- 请输入密码 -->
+                    <input type="password" id="guanjia_pwd_1" placeholder="Masukkan kata sandi" /><!-- 请输入密码 -->
                 </div>
                 <!-- <div class="af-in-code">
                     <input type="text" placeholder="请输入验证码" id="guanjia_code_1" maxlength="6" onkeyup="this.value = this.value.replace(/\D/g, '')" />
                     <button class="code-blue fr" id="get_guanjia_code">获取验证码</button>
                 </div> -->
-                <button class="submit-blue" id="guanjia_login"><!-- 立即借款 -->pinjam uang</button>
+                <button class="submit-blue" id="guanjia_login"><!-- 立即借款 -->Pinjam Uang</button>
                 <div class="pc-l-xieyi f12">
                     <label>
-                        <input type="checkbox" name="xy" checked="true" id="guanjia_xieyi_1"> <!-- 同意并接受 -->setuju dan terima
-                        <a href="/contract/" target='_blank'><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a>
+                        <input type="checkbox" name="xy" checked="true" id="guanjia_xieyi_1"> <!-- 同意并接受 -->Setuju dan Terima
+                        <a href="/contract/" target='_blank'><span class="blue">《<!-- 桃来网服务协议 -->Persetujuan Layanan》</span></a>
                     </label>
                 </div>
             </div>
@@ -50,23 +50,23 @@
         <ul>
             <li>
                 <img src="__PIC__/fast1.png" />
-                <h3><!-- 放款快 -->pencairan uang cepat</h3>
+                <h3><!-- 放款快 -->Pencairan Uang Cepat</h3>
                 <p><!-- 最快1分钟到账 -->1 menit uang cair</p>
             </li>
             <li>
                 <img src="__PIC__/fast2.png" />
-                <h3><!-- 利率低 -->suku bunga rendah</h3>
-                <p><!-- 利率低值0.02% -->bunga rendah sampai 0.02%</p>
+                <h3><!-- 利率低 -->Suku Bunga Rendah</h3>
+                <p><!-- 利率低值0.02% -->Bunga rendah sampai 0.02%</p>
             </li>
             <li>
                 <img src="__PIC__/fast3.png" />
-                <h3><!-- 额度高 -->lini Kredit tinggi</h3>
+                <h3><!-- 额度高 -->Lini Kredit Tinggi</h3>
                 <p><!-- 最高5万额度 -->Sampai dengan 50 jt</p>
             </li>
             <li>
                 <img src="__PIC__/fast4.png" />
-                <h3><!-- 门槛低 -->persyaratan mudah</h3>
-                <p><!-- 凭身份证就能借款 -->dapatkan uang cukup dengan KTP</p>
+                <h3><!-- 门槛低 -->Persyaratan Mudah</h3>
+                <p><!-- 凭身份证就能借款 -->Dapatkan uang cukup dengan KTP</p>
             </li>
         </ul>
     </div>
@@ -76,11 +76,11 @@
             <table>
                 <tr>
                     <td class="ne-left" rowspan="2">
-                        <p class="tit"><!-- 新口子 -->Mitra baru</p>
-                        <p><!-- 每日 -->setiap hari</p>
+                        <p class="tit"><!-- 新口子 -->Mitra Baru</p>
+                        <p><!-- 每日 -->Setiap Hari</p>
                         <p><!-- 新增2-3个 -->Tambahkan 2 - 3</p>
-                        <p><!-- 新口子 -->Mitra baru</p>
-                        <p class="more f12"><a href="/borrow/0-0-0-1/"><!-- 更多 -->lebih banyak ></a></p>
+                        <p><!-- 新口子 -->Mitra Baru</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-1/"><!-- 更多 -->Lebih Banyak ></a></p>
                     </td>
                     {volist name="news" id="new"}
                         <td class="ne-right">
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($new['money_min'])}-{:number_format($new['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <!-- 额度范围 -->Lini Kredit：<span class="red mr20">{:number_format($new['money_min'])}-{:number_format($new['money_max'])}</span> <!-- 借款期限 -->Waktu Jatuh Tempo：
                                         <span class="red">{$new.time_limit}</span>
                                     </div>
                                 </div>
@@ -109,11 +109,11 @@
             <table>
                 <tr>
                     <td class="ne-left" rowspan="2">
-                        <p class="tit"><!-- 放款快 -->pencairan uang cepat</p>
+                        <p class="tit"><!-- 放款快 -->Pencairan Uang Cepat</p>
                         <p><!-- 1分钟到账 -->1 menit uang cair</p>
-                        <p><!-- 凭身份证 -->dapatkan uang cukup dengan KTP</p>
-                        <p><!-- 就能借 -->pinjam uang</p>
-                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->lebih banyak ></a></p>
+                        <p><!-- 凭身份证 -->Dapatkan uang cukup dengan KTP</p>
+                        <p><!-- 就能借 -->Pinjam Uang</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->Lebih Banyak ></a></p>
                     </td>
                     {volist name="fasts" id="fast"}
                         <td class="ne-right">
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($fast['money_min'])}-{:number_format($fast['money_max'])}</span> <!-- 借款期限 waktu jatuh tempo-->：
+                                        <!-- 额度范围 -->Lini Kredit：<span class="red mr20">{:number_format($fast['money_min'])}-{:number_format($fast['money_max'])}</span> <!-- 借款期限 waktu jatuh tempo-->：
                                         <span class="red">{$fast.time_limit}</span>
                                     </div>
                                 </div>
@@ -141,11 +141,11 @@
             <table>
                 <tr>
                     <td class="ne-left" rowspan="2">
-                        <p class="tit"><!-- 职业 -->pekerjaan</p>
-                        <p><!-- 上班族 -->karyawan？</p>
-                        <p><!-- 学生党 -->pelajar？</p>
-                        <p><!-- 想借就借 -->pinjam sesuai keinginanmu</p>
-                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->lebih banyak ></a></p>
+                        <p class="tit"><!-- 职业 -->Pekerjaan</p>
+                        <p><!-- 上班族 -->Karyawan？</p>
+                        <p><!-- 学生党 -->Pelajar？</p>
+                        <p><!-- 想借就借 -->Pinjam Sesuai Keinginanmu</p>
+                        <p class="more f12"><a href="/borrow/0-0-0-0/"><!-- 更多 -->Lebih Banyak ></a></p>
                     </td>
                     {volist name="professions" id="profession"}
                         <td class="ne-right">
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="bd">
                                     <div class="rate">
-                                        <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($profession['money_min'])}-{:number_format($profession['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                        <!-- 额度范围 -->Lini Kredit：<span class="red mr20">{:number_format($profession['money_min'])}-{:number_format($profession['money_max'])}</span> <!-- 借款期限 -->Waktu Jatuh Tempo：
                                         <span class="red">{$profession.time_limit}</span>
                                     </div>
                                 </div>

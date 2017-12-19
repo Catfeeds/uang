@@ -1,7 +1,7 @@
 <div class="search b-line">
-    <div class="tit"><span><!-- 贷款产品搜索 -->Pencarian aplikasi</span></div>
+    <div class="tit"><span><!-- 贷款产品搜索 -->Pencarian Aplikasi</span></div>
     <div class="search-block">
-        <div class="cur" id='JigouSearch_type1'><!-- 借款金额 -->jumlah yang dipinjam</div>
+        <div class="cur" id='JigouSearch_type1'><!-- 借款金额 -->Jumlah Yang Dipinjam</div>
         <ul>
             {volist name="dic['money_limit']" id="vo" key="k"}
             <li data='{$k-1}'>{$vo}</li>
@@ -9,7 +9,7 @@
         </ul>
     </div>
     <div class="search-block">
-        <div class="cur" id='JigouSearch_type2'><!-- 借款期限 -->waktu jatuh tempo</div>
+        <div class="cur" id='JigouSearch_type2'><!-- 借款期限 -->Waktu Jatuh Tempo</div>
         <ul>
             {volist name="dic['time_limit']" id="vo" key="k"}
             <li data='{$k-1}'>{$vo}</li>
@@ -17,14 +17,14 @@
         </ul>
     </div>
     <div class="search-block">
-        <div class="cur" id='JigouSearch_type3'><!-- 职业身份 -->pekerjaan</div>
+        <div class="cur" id='JigouSearch_type3'><!-- 职业身份 -->Pekerjaan</div>
         <ul>
             {volist name="dic['profession']" id="vo" key="k"}
             <li data='{$k-1}'>{$vo}</li>
             {/volist}
         </ul>
     </div>
-    <button class="submit-blue" id='JigouSearch'><!-- 搜一搜 -->pencarian</button>
+    <button class="submit-blue" id='JigouSearch'><!-- 搜一搜 -->Pencarian</button>
 </div>
 <script>
     $(function() {

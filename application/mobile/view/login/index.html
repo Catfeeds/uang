@@ -6,11 +6,11 @@
 
     <div class="r-list step1">
         <div class="r-info brb">
-            <label for="mobile" class="s-tit"><!-- 手机号 -->nomor ponsel</label><!-- 请输入手机号码 -->
+            <label for="mobile" class="s-tit"><!-- 手机号 -->Nomor Ponsel</label><!-- 请输入手机号码 -->
             <input maxlength="12" type="tel" value="" id="mobile" placeholder="masukkan nomor ponsel" data-form-un="1511436671115.9417">
         </div>
         <div class="r-info">
-            <label for="mima" class="s-tit"><!-- 登录密码 -->kata sandi</label><!-- 6-20位有效密码 -->
+            <label for="mima" class="s-tit"><!-- 登录密码 -->Kata Sandi</label><!-- 6-20位有效密码 -->
             <input class="w100" type="password" value="" id="mima" maxlength="20" placeholder="masukkan kata sandi" data-form-pw="1511436671115.9417">
         </div>
     </div>
@@ -18,9 +18,9 @@
         <button class="submit-now" id="login">登陆</button>
     </div> -->
     <div class="huadongyz">
-        <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->geser ke kanan</span> </div>
+        <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->Geser ke kanan</span> </div>
     </div>
-    <a href="/reg" class="p-login"><!-- 注册&gt;&gt; -->daftar</a>
+    <a href="/reg" class="p-login"><!-- 注册&gt;&gt; -->Daftar</a>
 </div>
 <script>
     //滑动验证
@@ -29,14 +29,15 @@
             var phone = $('#mobile').val();
             var password = $('#mima').val();
             console.log(phone);
-            if (!phone || !checkMobile(phone)) {
-                dialog.alert('nomor ponsel error');
+            // if (!phone || !checkMobile(phone)) {
+            if (!phone) {
+                dialog.alert('Nomor ponsel error');
                 // dialog.alert('手机号码格式错误！');
                 slider.reset();
                 return false;
             }
             if (!password || password.length < 6 || !checkPassword(password)) {
-                dialog.alert('masukkan kata sandi 6-20 digit');
+                dialog.alert('Masukkan kata sandi 6-20 digit');
                 // dialog.alert('登录密码格式必须在6-20位！');
                 slider.reset();
                 return false;
@@ -50,7 +51,7 @@
                 success: function (msg) {
                     console.log(msg)
                     if (msg.code == 1) {
-                        dialog.alert('login berhasil');
+                        dialog.alert('Login berhasil');
                         // dialog.alert('登录成功！');
                         setTimeout("window.location.href = '/center'", 500);
                         return false;
@@ -76,13 +77,14 @@
         var phone = $('#mobile').val();
         var password = $('#mima').val();
         console.log(phone);
-        if (!phone || !checkMobile(phone)) {
-            dialog.alert('nomor ponsel error');
+        // if (!phone || !checkMobile(phone)) {
+        if (!phone) {
+            dialog.alert('Nomor ponsel error');
             // dialog.alert('手机号码格式错误！');
             return false;
         }
         if (!password || password.length < 6 || !checkPassword(password)) {
-            dialog.alert('masukkan kata sandi 6-20 digit');
+            dialog.alert('Masukkan kata sandi 6-20 digit');
             // dialog.alert('登录密码格式必须在6-20位！');
             return false;
         }
@@ -93,7 +95,7 @@
             data: {phone: phone, password: password},
             success: function (msg) {
                 if (msg.code == 1) {
-                    dialog.alert('login berhasil');
+                    dialog.alert('Login berhasil');
                     // dialog.alert('登录成功！');
                     setTimeout("window.location.href = '/center'", 500);
                     return false;

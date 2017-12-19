@@ -29,7 +29,7 @@
             <tbody>
                 <tr>
                     <td {if(empty($type))}class="cur"{/if}><a href="/"><span><!-- 热门 -->Popular</span></a></td>
-                    <td {if($type==1)}class="cur"{/if}><a href="/?type=1"><span><!-- 新口子 -->Bunga kecil</span></a></td>
+                    <td {if($type==1)}class="cur"{/if}><a href="/?type=1"><span><!-- 新口子 -->Bunga Kecil</span></a></td>
                     <td {if($type==2)}class="cur"{/if}><a href="/?type=2"><span><!-- 未申请 -->Pinjaman Besar<!-- <span class="red" id="weishenqing_count">(99)</span> --></span></a></td>
                     <td {if($type==3)}class="cur"{/if}><a href="/?type=3"><span><!-- 已申请 -->Proses Cepat<!-- <span class="red" id="yishenqing_count">(0)</span> --></span></a></td>
                 </tr>
@@ -44,7 +44,7 @@
         <div class="info index-layout">
             <div class="hd">
                 <span class="gray" onclick="window.location.href = '/detail/{$vo.id}'">
-                    <span class="tag"><!-- 新口子 -->Mitra baru</span>
+                    <span class="tag"><!-- 新口子 -->Mitra Baru</span>
                     <a class="fl f16 mr10" href="javascript:;">{$vo.name}</a> {$vo.title} 
                 </span>
                 <!-- 评论 -->
@@ -56,12 +56,12 @@
                 <div class="bd">
                     <div class="infor fl">
                         <div class="count red">Rp.{$vo.money_max}</div>
-                        <div class="count-d gray"><!-- 最高借款额度(元) -->lini kredit tertinggi</div>
+                        <div class="count-d gray"><!-- 最高借款额度(元) -->Lini kredit tertinggi</div>
                     </div>
                     <div class="infor fl">
                         <div class="margin">
-                            <div class="infor-m"><span class="gray"><!-- 借款期限 -->waktu jatuh tempo </span>{$vo.time_limit}</div>
-                            <div class="infor-m"><span class="gray"><!-- 最低利率 -->bunga terendah </span>{$vo.money_rate}%</div>
+                            <div class="infor-m"><span class="gray"><!-- 借款期限 -->Waktu Jatuh Tempo </span>{$vo.time_limit}</div>
+                            <div class="infor-m"><span class="gray"><!-- 最低利率 -->Bunga Terendah </span>{$vo.money_rate}%</div>
                         </div>
                     </div>
                 </div>
@@ -72,23 +72,23 @@
                 <!--未申请--> 
                 <span class="i-apply on ">
                     {if(empty($vo.apply))}
-                    <i class="applied"></i> <span class="blue f16 " pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->disetujui？</span>
-                    <span class="gray f16 none" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->disetujui!</span>
+                    <i class="applied"></i> <span class="blue f16 " pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->Disetujui？</span>
+                    <span class="gray f16 none" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->Disetujui!</span>
                     {else /}
-                    <i class="apply"></i> <span class="blue f16 none" pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->disetujui？</span>
-                    <span class="gray f16" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->disetujui!</span>
+                    <i class="apply"></i> <span class="blue f16 none" pro_id="{$vo.id}" onclick="FirstClick(this);"><!-- 已申请 -->Disetujui？</span>
+                    <span class="gray f16" pro_id="{$vo.id}" get_status="0"><!-- 已申请过！ -->Disetujui!</span>
                     {/if}
                     
                     
                 </span>
                 <div class="layout index-apply none">
                     <img src="__IMG__/plane.png" alt="">
-                    <p><!-- 确定已申请注册过 -->telah registrasi sebelumnya【<span>{$vo.name}</span>】?</p>
+                    <p><!-- 确定已申请注册过 -->Telah registrasi sebelumnya【<span>{$vo.name}</span>】?</p>
                     <p class="f12 left gray" style="text-align:center;"><!-- *只要申请过，无论成功下款与否，都视为已申请哦 --></p>
                     <button class="yes"><!-- 是，我注册过 -->Ya</button>
                     <button class="no"><!-- 不，我点错了 -->Tidak</button>
                 </div>
-                <button class="jiekuan-btn fr" onclick="Jiekuan('{$vo.id}')"><!-- 立即借款 -->pinjam uang</button>
+                <button class="jiekuan-btn fr" onclick="Jiekuan('{$vo.id}')"><!-- 立即借款 -->Pinjam Uang</button>
             </div>
         </div>
         {/volist}
@@ -96,7 +96,7 @@
 
         <!--申请无数据时-->
         <div class="no-applied {if(!empty($products))}none{/if}"> <img src="__IMG__/longarrow.png">
-            <div class="center"> <span class="i-apply clear"> <i class="applied"></i> <span class="blue f16"><!-- 已申请 -->disetujui？</span> </span> </div>
+            <div class="center"> <span class="i-apply clear"> <i class="applied"></i> <span class="blue f16"><!-- 已申请 -->Disetujui?</span> </span> </div>
             <p class="gray"><!-- 确认后将显示在此，方便日后管理 -->Diperlihatkan disini setelah di konfirmasi.</p>
         </div>
     </div>

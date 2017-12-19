@@ -10,15 +10,15 @@
                             <div class="tit">
                                 <span>{$info.name}</span> {$info.title} </div>
                             <div class="rate">
-                                <!-- 额度范围 -->lini kredit：<span class="red mr20">{:number_format($info['money_min'])}-{:number_format($info['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                <!-- 额度范围 -->Lini Kredit：<span class="red mr20">{:number_format($info['money_min'])}-{:number_format($info['money_max'])}</span> <!-- 借款期限 -->Waktu Jatuh Tempo：
                                 <span class="red">{$info.time_limit}</span>
                             </div>
                         </div>
                         <div class="rate-abs f14"><span class="red f24 mb10">{$info.money_rate}%</span>
-                            <br /><!-- 最低日利率 -->bunga harian</div>
+                            <br /><!-- 最低日利率 -->Bunga Harian</div>
                     </div>
                     <div class="bd">
-                        <button class="list-btn fr showpro"><!-- 立即借款 -->pinjam uang</button>
+                        <button class="list-btn fr showpro"><!-- 立即借款 -->Pinjam Uang</button>
                         <div class="sr-tag">
                         {volist name="info['tags']" id="tag" }
                             <span>{$tag.tag_name}</span>
@@ -30,35 +30,35 @@
             <div class="infomation-detail">
                 <div class="hd">
                     <ul>
-                        <li class="cur"><a href="JavaScript:;" data-type="info" onclick="changeTab(this)"><span><!-- 基本信息 -->informasi dasar</span></a></li>
-                        <li><a href="JavaScript:;" data-type="commit" onclick="changeTab(this)"><span><!-- 评论 -->ulasan(<span class="red">{$info.comments_count}</span>)</spa2></a></li>
+                        <li class="cur"><a href="JavaScript:;" data-type="info" onclick="changeTab(this)"><span><!-- 基本信息 -->Informasi Dasar</span></a></li>
+                        <li><a href="JavaScript:;" data-type="commit" onclick="changeTab(this)"><span><!-- 评论 -->Ulasan(<span class="red">{$info.comments_count}</span>)</spa2></a></li>
                     </ul>
-                    <button class="list-btn fr showpro mt0 none"><!-- 立即借款 -->pinjam uang</button>
+                    <button class="list-btn fr showpro mt0 none"><!-- 立即借款 -->Pinjam Uang</button>
                 </div>
                 <div>
                     <!-- 基本信息 -->
                     <div class="bd" id="tab_info">
-                        <div class="tit"><!-- 申请条件 -->terapkan persyaratan</div>
+                        <div class="tit"><!-- 申请条件 -->Terapkan Persyaratan</div>
                         <p>{:htmlspecialchars_decode($info.requirement)}</p>
-                        <div class="tit"><!-- 所需材料 -->dokumen yang dibutuhkan</div>
+                        <div class="tit"><!-- 所需材料 -->Dokumen Yang Dibutuhkan</div>
                         <p>{:htmlspecialchars_decode($info.data)}</p>
-                        <div class="tit"><!-- 审核说明 -->inspeksi</div>
+                        <div class="tit"><!-- 审核说明 -->Inspeksi</div>
                         <p>{:htmlspecialchars_decode($info.verify)}</p>
-                        <div class="tit"><!-- 平台介绍 -->deskripsi platform</div>
+                        <div class="tit"><!-- 平台介绍 -->Deskripsi Platform</div>
                         <p>{:htmlspecialchars_decode($info.desc)}</p>
-                        <div class="tit"><!-- 算一算，更放心 -->menghitung</div>
+                        <div class="tit"><!-- 算一算，更放心 -->Menghitung</div>
                         <div class="calculate">
                             <div class="c-input ml15"><!-- 借多少 -->
-                                <input type="text" placeholder="jumlah pinjaman" id="jie_money" maxlength="5" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
+                                <input type="text" placeholder="Jumlah pinjaman" id="jie_money" maxlength="5" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
                                 <span><!-- 元 -->Rp.</span>
                             </div>
                             <div class="c-input"><!-- 借多久 -->
-                                <input type="text" placeholder="jumlah waktu pinjaman" id="jie_day" maxlength="3" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
+                                <input type="text" placeholder="Jumlah waktu pinjaman" id="jie_day" maxlength="3" autocomplete="off" onkeyup="this.value = this.value.replace(/\D/g, '')" />
                                 <span>hari</span>
                             </div>
                             <div class="clear">
                                 <span class="ml15 mr50"><!-- 应还款 -->Saldo Baru：<span id="yhk">0</span><!-- 元 -->Rp.</span>
-                                <span><!-- 总费用 -->total biaya：<span id="zfy">0</span><!-- 元 -->Rp.</span>
+                                <span><!-- 总费用 -->Total Biaya：<span id="zfy">0</span><!-- 元 -->Rp.</span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="comment-bd none" id="tab_commit">
                         <div class="star">
                             <div class="s-block">
-                                <div class="tit"><!-- 放款速度 -->Kecepatan uang cair</div>
+                                <div class="tit"><!-- 放款速度 -->Kecepatan Uang Cair</div>
                                 <!--li加上cur样式可将星星变红-->
                                 <div class="stars">
                                     <ul>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="s-block">
-                                <div class="tit"><!-- 难易程度 -->tingkat kesulitan</div>
+                                <div class="tit"><!-- 难易程度 -->Tingkat Kesulitan</div>
                                 <div class="stars">
                                     <ul>
                                         <li></li>
@@ -132,11 +132,11 @@
                             </ul>
                         </div>
                         <div class="texta"><!-- 您认为我们的产品如何呢？说说您的使用心得。 -->
-                            <textarea placeholder="pendapat anda tentang produk kami" id="dianping_text"></textarea>
+                            <textarea placeholder="Pendapat anda tentang produk kami" id="dianping_text"></textarea>
                             <span class="num"><span class="count">0</span>/140</span>
                         </div>
                         <div class="center">
-                            <button class="submit-blue short dianping"><!-- 提交 -->kirim</button>
+                            <button class="submit-blue short dianping"><!-- 提交 -->Kirim</button>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
     <div class="clear"></div>
 </div>
 <div class="ld-twocode none">
-    <div class="hd"><!-- 扫一扫立即借款 -->pindai untuk meminjam</div>
+    <div class="hd"><!-- 扫一扫立即借款 -->Pindai Untuk Meminjam</div>
     <img src="/upload/qr/{$info.id}.png" />
     <div class="pc-close"></div>
 </div>

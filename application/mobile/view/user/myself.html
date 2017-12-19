@@ -6,15 +6,15 @@
     <div class="m-list">
         <ul>
             <li>
-                <label for="img"><!-- 头像修改 -->ganti avatar</label>
+                <label for="img"><!-- 头像修改 -->Ganti avatar</label>
                 <span class="portrait fr"> <img src="{:empty($user.avatar)?'__IMG__/user_por.png':$user.avatar}" class="now_img"> </span>
                 <input class="i-portrait" type="file" name="img" onchange="uploadimg();" id="img">
             </li>
             <li  onclick="window.location.href = '/mobile/user/changenickname'">
-                <label><!-- 修改昵称 -->ganti nama</label>
+                <label><!-- 修改昵称 -->Ganti nama</label>
             </li>
             <li  onclick="window.location.href = '/mobile/user/changepwd'">
-                <label><!-- 修改密码 -->ganti kata sandi</label>
+                <label><!-- 修改密码 -->Ganti kata sandi</label>
             </li>
         </ul>
     </div>

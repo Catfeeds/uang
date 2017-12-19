@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Uangmart - kami bantu pinjamkan uang</title><!-- 桃来网-急用钱找桃来网 -->
+    <title>Uangmart - Kami bantu pinjamkan uang</title><!-- 桃来网-急用钱找桃来网 -->
     <meta name="keywords" content="Uangmart, Pinjaman Uang" />
     <meta name="description" content="Uangmart adalah platfrom profesional yang dapat membantu anda menemukan pinjaman dengan mudah dan aman." />
     <link href="__CSS__/common.css" rel="stylesheet" type="text/css" />
@@ -32,9 +32,9 @@
                     <div class="welcome fl"><!-- Hi，欢迎加入 -->Hai, Selamat datang di <a href="/"><!-- 桃来网 -->Uangmart</a></div>
                     {if (!empty($user))}
                     <span class="username">{$user.name}</span>
-                    <a href="/loginOut"><button class="loginout"><!-- 退出 -->keluar</button></a>
+                    <a href="/loginOut"><button class="loginout"><!-- 退出 -->Keluar</button></a>
                     {else /}
-                    <button class="login login_button_mima"><!-- 登陆 -->login</button>
+                    <button class="login login_button_mima"><!-- 登陆 -->Login</button>
                     <button class="reg login_button_reg"><!-- 注册 -->Daftar Baru</button>
                     {/if}
                 </div>
@@ -54,7 +54,7 @@
                     <table>
                         <tr>
                             <td {if (request()->controller()=='Index')}class="cur"{/if}><a href="/"><span><!-- 首页 -->beranda</span></a></td>
-                            <td {if (in_array(request()->controller(),['Product','Institution']))}class="cur"{/if}><a href="/borrow/0-0-0-0"><span><!-- 我要借款 -->pinjam uang</span></a></td>
+                            <td {if (in_array(request()->controller(),['Product','Institution']))}class="cur"{/if}><a href="/borrow/0-0-0-0"><span><!-- 我要借款 -->Pinjam Uang</span></a></td>
                             <!-- <td {if (request()->controller()=='News')}class="cur"{/if}><a href="/news"><span>借款攻略</span></a></td> -->
                             <!-- <td {if (request()->controller()=='Bbs')}class="cur"{/if}><a href="/bbs" target="_blank"><span>论坛</span></a></td> -->
                         </tr>

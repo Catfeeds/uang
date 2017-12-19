@@ -3,7 +3,7 @@
     <!-- 条件筛选 -->
     <div class="term">
         <div class="term-type">
-            <div class="tit"><!-- 借款额度 -->jumlah pinjaman</div>
+            <div class="tit"><!-- 借款额度 -->Jumlah Pinjaman</div>
             <ul>
             {volist name="dic['money_limit']" id="vo" key="k"}
                 <li {if ($k-1 == $limit[0])}class="cur"{/if}>
@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div class="term-type">
-            <div class="tit"><!-- 借款期限 -->waktu jatuh tempo</div>
+            <div class="tit"><!-- 借款期限 -->Waktu Jatuh Tempo</div>
             <ul>
             {volist name="dic['time_limit']" id="vo" key="k"}
                 <li {if ($k-1 == $limit[2])}class="cur"{/if}>
@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="term-type">
-            <div class="tit"><!-- 职业身份 -->pekerjaan</div>
+            <div class="tit"><!-- 职业身份 -->Pekerjaan</div>
             <ul>
             {volist name="dic['profession']" id="vo" key="k"}
                 <li {if ($k-1 == $limit[4])}class="cur"{/if}>
@@ -33,7 +33,7 @@
             </ul>
         </div>
         <div class="term-type">
-            <div class="tit"><!-- 是否新口子 -->Pemohon baru ? Y/N</div>
+            <div class="tit"><!-- 是否新口子 -->Pemohon Baru ? Y/N</div>
             <ul>
             {volist name="dic['is_new']" id="vo" key="k"}
                 <li {if ($k-1 == $limit[6])}class="cur"{/if}>
@@ -57,7 +57,7 @@
                             <div class="tit ml15">
                                 <span>{$product.name}</span>
                                 <div class="rate">
-                                    <!-- 额度范围 -->lini kredit：<span class="red mr20 f14">{:number_format($product['money_min'])}-{:number_format($product['money_max'])}</span> <!-- 借款期限 -->waktu jatuh tempo：
+                                    <!-- 额度范围 -->Lini Kredit：<span class="red mr20 f14">{:number_format($product['money_min'])}-{:number_format($product['money_max'])}</span> <!-- 借款期限 -->Waktu Jatuh Tempo：
                                     <span class="red f14">{$product.time_limit}</span>
                                 </div>
                                 <div class="rate-abs f14"><span class="red f24 mr0">{$product.money_rate}%</span>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="bd">
-                            <button class="list-btn fr"><!-- 立即借款 -->pinjam uang</button>
+                            <button class="list-btn fr"><!-- 立即借款 -->Pinjam Uang</button>
                             <div class="sr-tag">
                             {volist name="product['tags']" id="tag"}
                                 <span>{$tag.tag_name}</span>

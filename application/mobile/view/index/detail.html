@@ -8,14 +8,14 @@
             <div class="tit">
             	<img src="{$info.logo}">
                 <div class="pt20">{$info.name}<span class="red fr mr10">{$info.money_rate}%</span></div>
-                <span class="gray fr mr15"><!-- 最低日利率 -->bunga harian</span>
+                <span class="gray fr mr15"><!-- 最低日利率 -->Bunga Harian</span>
             </div>
             <div class="jk-range clear">
                 <table>
                     <tbody>
                         <tr>
-                            <th><!-- 借款范围 -->jumlah pinjaman</th>
-                            <th><!-- 借款期限 -->waktu jatuh tempo</th>
+                            <th><!-- 借款范围 -->Jumlah Pinjaman</th>
+                            <th><!-- 借款期限 -->Waktu Jatuh Tempo</th>
                             <!-- <th>最快放款</th> -->
                         </tr>
                         <tr>
@@ -29,47 +29,47 @@
         </div>
         <div class="t-choose">
             <div class="t-detail cur" chosetype="1"><!-- 借款详情 -->Detail</div>
-            <div class="t-comment" chosetype="2"><!-- 借款评论 -->ulasan(<span class="red">{$info.comments_count}</span>)</div>
+            <div class="t-comment" chosetype="2"><!-- 借款评论 -->Ulasan(<span class="red">{$info.comments_count}</span>)</div>
         </div>
         <div class="t-details pb60">
             <div class="info">
-                <div class="i-tit"><!-- 申请条件 -->terapkan persyaratan</div>
+                <div class="i-tit"><!-- 申请条件 -->Terapkan Persyaratan</div>
                 <p>{:htmlspecialchars_decode($info.requirement)}<br>
                 </p>
             </div>
             <div class="info">
-                <div class="i-tit i-red"><!-- 所需材料 -->dokumen yang dibutuhkan</div>
+                <div class="i-tit i-red"><!-- 所需材料 -->Dokumen Yang Dibutuhkan</div>
                 <p>{:htmlspecialchars_decode($info.data)}</p>
             </div>
             <div class="info">
-                <div class="i-tit i-green"><!-- 审核说明 -->inspeksi</div>
+                <div class="i-tit i-green"><!-- 审核说明 -->Inspeksi</div>
                 <p>{:htmlspecialchars_decode($info.verify)}</p>
             </div>
             <div class="info">
-                <div class="i-tit i-yellow"><!-- 平台介绍 -->deskripsi platform</div>
+                <div class="i-tit i-yellow"><!-- 平台介绍 -->Deskripsi Platform</div>
                 <p>{:htmlspecialchars_decode($info.desc)}
                 </p>
             </div>
             <div class="info">
-                <div class="i-tit i-orange"><!-- 算一算 更放心 -->menghitung<span class="gray wauto fnone"><!-- (仅供参考) --></span></div>
-                <div class="gray"><!-- 借多少 -->jumlah pinjaman
+                <div class="i-tit i-orange"><!-- 算一算 更放心 -->Menghitung<span class="gray wauto fnone"><!-- (仅供参考) --></span></div>
+                <div class="gray"><!-- 借多少 -->Jumlah Pinjaman
                     <input type="tel" value="" id="jie_money" maxlength="5">
                     <!-- 元 -->Rp.</div>
-                <div class="gray"><!-- 借多少 -->jumlah pinjaman
+                <div class="gray"><!-- 借多少 -->Jumlah Pinjaman
                     <input type="tel" value="" id="jie_day" maxlength="3">
-                    <!-- 天 -->hari</div>
+                    <!-- 天 -->Hari</div>
                 <div class="cou mt10"><span class="gray mr10"><!-- 应还款 -->Saldo Baru</span><span id="yhk">0</span><!-- 元 -->Rp.</div>
-                <div class="cou mt10"><span class="gray mr10"><!-- 总费用 -->total biaya</span><span id="zfy">0</span><!-- 元 -->Rp.</div>
+                <div class="cou mt10"><span class="gray mr10"><!-- 总费用 -->Total Biaya</span><span id="zfy">0</span><!-- 元 -->Rp.</div>
             </div>
         </div>
         <div class="fix-s-btn">
-            <button class="submit-now mt0" onclick="Jiekuan('{$info.id}')"><!-- 立即借款 -->pinjam uang</button>
+            <button class="submit-now mt0" onclick="Jiekuan('{$info.id}')"><!-- 立即借款 -->Pinjam Uang</button>
         </div>
     </div>
     
     <div class="t-comments none" style="padding-bottom: 40px;">
         <div class="stars">
-            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均放款速度 -->kecepatan rilis uang rata-rata</span>
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均放款速度 -->Kecepatan Rilis Uang Rata-rata</span>
                 <div class="star-show" noselect="1">
                     <ul class="s-white">
                         <li></li>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均难易程度 -->tingkat kesulitan rata-rata</span>
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均难易程度 -->Tingkat Kesulitan Rata-rata</span>
                 <div class="star-show" noselect="1">
                     <ul class="s-white">
                         <li></li>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均催收 -->perkiraan tagihan</span>
+            <div class="s-list"> <span class="tit" style="display: inline-block;width: 100%"><!-- 平均催收 -->Perkiraan Tagihan</span>
                 <div class="star-show" noselect="1">
                     <ul class="s-white">
                         <li></li>
@@ -143,7 +143,7 @@
         <span class="t-count gray"><span class="cur-count">0</span>/140</span>
     </div>
     <div class="t-btn none">
-    	<a href="/dianping/198_196/"> <i class="comment"></i> <!-- 点评 -->ulasan </a>
+    	<a href="/dianping/198_196/"> <i class="comment"></i> <!-- 点评 -->Ulasan </a>
         <button class="submit-now mt0" onclick="Jiekuan(#)"><!-- 立即申请 --></button>
     </div>
 </div>
@@ -175,7 +175,7 @@
         $('.c-editor textarea').click(function () {
             var my_dp_count = $('.my_dp_count').val();
             if (user_id==0) {
-                dialog.alert("login sebelum beri ulasan", '1000');
+                dialog.alert("Login sebelum beri ulasan", '1000');
                 // dialog.alert("请先登录再点评！", '1000');
                 var nowurl = window.location.href;
                 setTimeout("window.location.href = '/login'", 1000);
@@ -183,7 +183,7 @@
             }
             var max_dianing = $('.max_dianing').val();
             if (my_dp_count && (my_dp_count - max_dianing) > 0) {
-                dialog.alert("ulasan anda telah dibatasi");
+                dialog.alert("Ulasan anda telah dibatasi");
                 // dialog.alert("您的点评次数超过上限！");
                 $('#textarea').attr('readonly', 'readonly');
                 $('.c-editor').removeClass('foc');
@@ -207,7 +207,7 @@
                 return false;
             }
             if (content && content.length < 3) {
-                dialog.alert("ulasan terlalu singkat");
+                dialog.alert("Ulasan terlalu singkat");
                 // dialog.alert("点评内容太短！");
                 return false;
             }

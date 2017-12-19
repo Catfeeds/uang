@@ -6,13 +6,13 @@
     <div class="m-list">
         <ul>
             <li>
-                <label for="nickname"><!-- 修改昵称 -->ganti nama panggilan</label>
+                <label for="nickname"><!-- 修改昵称 -->Ganti nama panggilan</label>
                 <input class="name fr" value="{$user.name}" id="nickname" maxlength="10">
             </li>
         </ul>
     </div>
     <div class="s-btn">
-        <button class="submit-now" id="xiugai"><!-- 确认修改 -->konfirmasi</button>
+        <button class="submit-now" id="xiugai"><!-- 确认修改 -->Konfirmasi</button>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
         $('#xiugai').on('click', function () {
             var nickname = $('#nickname').val();
             if (!nickname || !(/^[A-Za-z][A-Za-z\s]*[A-Za-z]$/i.test(nickname))) {
-                dialog.alert("format nama error");
+                dialog.alert("Format nama error");
                 // dialog.alert("姓名格式错误！");
                 return false;
             }

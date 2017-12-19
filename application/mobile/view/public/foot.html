@@ -2,9 +2,9 @@
     <table>
         <tbody>
             <tr>
-                <td {if(request()->controller()=='Index' && request()->action()!='faxian')}class="on"{/if}><a href="/"> <i class="icons nav1"></i> <span class="text"><!-- 我要借款 -->pinjam</span> </a></td>
-                <td {if(request()->controller()=='Index' && request()->action()=='faxian')}class="on"{/if}><a href="/faxian"> <i class="icons nav4"></i> <span class="text"><!-- 发现 -->temukan</span> </a></td>
-                <td {if(in_array(request()->controller(),['User','View','Message','Login']))}class="on"{/if}><a href="/center"> <i class="icons nav3"></i> <span class="text"><!-- 我的 -->saya</span> <span class="unread none"></span> </a></td>
+                <td {if(request()->controller()=='Index' && request()->action()!='faxian')}class="on"{/if}><a href="/"> <i class="icons nav1"></i> <span class="text"><!-- 我要借款 -->Pinjam</span> </a></td>
+                <td {if(request()->controller()=='Index' && request()->action()=='faxian')}class="on"{/if}><a href="/faxian"> <i class="icons nav4"></i> <span class="text"><!-- 发现 -->Temukan</span> </a></td>
+                <td {if(in_array(request()->controller(),['User','View','Message','Login']))}class="on"{/if}><a href="/center"> <i class="icons nav3"></i> <span class="text"><!-- 我的 -->Saya</span> <span class="unread none"></span> </a></td>
             </tr>
         </tbody>
     </table>

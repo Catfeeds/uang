@@ -6,21 +6,21 @@
     <div class="m-list">
         <ul>
             <li>
-                <label for="password"><!-- 旧密码 -->kata sandi lama</label>
+                <label for="password"><!-- 旧密码 -->Kata sandi lama</label>
                 <input type="password" class="name fr" value="" maxlength="20" id="pwd0">
             </li>
             <li>
-                <label for="password"><!-- 新密码 -->kata sandi baru</label>
+                <label for="password"><!-- 新密码 -->Kata sandi baru</label>
                 <input type="password" class="name fr" value="" maxlength="20" id="pwd1">
             </li>
             <li>
-                <label for="password"><!-- 再次输入 -->masukan kembali</label>
+                <label for="password"><!-- 再次输入 -->Masukan kembali</label>
                 <input type="password" class="name fr" value="" maxlength="20" id="pwd2">
             </li>
         </ul>
     </div>
     <div class="s-btn">
-        <button class="submit-now" id="xiugai"><!-- 确认修改 -->konfirmasi</button>
+        <button class="submit-now" id="xiugai"><!-- 确认修改 -->Konfirmasi</button>
     </div>
 </div>
 
@@ -37,12 +37,12 @@
             }
             console.log(pwd1)
             if (!checkPassword(pwd1)) {
-                dialog.alert("masukkan kata sandi 6-20 digit");
+                dialog.alert("Masukkan kata sandi 6-20 digit");
                 // dialog.alert("密码格式必须在6-20位英文数字组合！");
                 return false;
             }
             if (pwd1 !== pwd2) {
-                dialog.alert("kata sandi tidak sama");
+                dialog.alert("Kata sandi tidak sama");
                 // dialog.alert("两次输入密码不一致！");
                 return false;
             }

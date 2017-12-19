@@ -7,7 +7,7 @@
     
     <div class="r-list step1">
         <div class="r-info brb">
-            <label for="mobile" class="s-tit"><!-- 手机号 -->nomor ponsel</label>
+            <label for="mobile" class="s-tit"><!-- 手机号 -->Nomor Ponsel</label>
             <input maxlength="12" type="tel" value="" id="mobile">
             <!-- <button class="get-code fr time" id="time" is_send=""> 获取验证码 dapatkan kode verifikasi</button> -->
         </div>
@@ -16,12 +16,12 @@
             <input class="w100" type="tel" value="" id="code" maxlength="6">
         </div> -->
         <div class="r-info brb" id="setpassword">
-            <label for="code" class="s-tit"><!-- 登录密码 -->kata sandi</label><!-- 请设置6-20位登录密码 -->
-            <input class="w100" type="password" value="" id="password" maxlength="20" placeholder="masukan 6-20 digit kata sandi ">
+            <label for="code" class="s-tit"><!-- 登录密码 -->Kata Sandi</label><!-- 请设置6-20位登录密码 -->
+            <input class="w100" type="password" value="" id="password" maxlength="20" placeholder="Masukan 6-20 digit kata sandi ">
         </div>
         <div class="r-info brb" id="setpassword">
-            <label for="code" class="s-tit"><!-- 确认密码 -->konfirmasi kata sandi</label><!-- 再次输入密码 -->
-            <input class="w100" type="password" value="" id="password2" maxlength="20" placeholder="masukan kata sandi kembali">
+            <label for="code" class="s-tit"><!-- 确认密码 -->Konfirmasi kata sandi</label><!-- 再次输入密码 -->
+            <input class="w100" type="password" value="" id="password2" maxlength="20" placeholder="Masukan kata sandi kembali">
         </div>
     </div>
 
@@ -34,8 +34,8 @@
         </div> -->
         <div class="r-list r-name">
             <div class="r-info brb">
-                <label for="realname" class="s-tit"><!-- 姓名 -->nama</label><!-- 输入姓名 -->
-                <input type="text" class="w100" value="" id="realname" maxlength="10" placeholder="masukan nama">
+                <label for="realname" class="s-tit"><!-- 姓名 -->Nama</label><!-- 输入姓名 -->
+                <input type="text" class="w100" value="" id="realname" maxlength="10" placeholder="Masukan nama">
             </div>
             <!-- <div class="r-info brb">
                 <label for="idcard" class="s-tit"> 身份证号 No ktp</label>输入身份证号
@@ -49,13 +49,13 @@
         <div class="l-xieyi" id="xy">
             <label>
                 <input type="checkbox" name="xy" checked="true">
-                <!-- 同意并接受 -->setuju dan terima<a href="/contract"><span class="blue">《<!-- 桃来网服务协议 -->persetujuan layanan》</span></a> </label>
+                <!-- 同意并接受 -->Setuju dan terima<a href="/contract"><span class="blue">《<!-- 桃来网服务协议 -->Persetujuan Layanan》</span></a> </label>
         </div>
         <!-- <div class="s-btn">
             <button class="submit-now" id="regLogin">立即申请</button>
         </div> -->
         <div class="huadongyz">
-            <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->geser ke kanan</span> </div>
+            <div id="slider"> <span id="label"></span> <span id="lableTip"><!-- 向右滑动验证 -->Geser ke kanan</span> </div>
         </div>
     </div>
 </div>
@@ -76,19 +76,19 @@
             var idcard = $('#idcard').val();
             // var qq = $('#qq').val();
             if (!mobile || !checkMobile(mobile)) {
-                dialog.alert('nomor ponsel error');
+                dialog.alert('Nomor ponsel error');
                 // dialog.alert('手机号码格式错误！');
                 slider.reset();
                 return false;
             }
             if (!password || !password2 || password.length<6 || password2.length<6) {
-                dialog.alert("kata sandi sal");
+                dialog.alert("Kata sandi sal");
                 // dialog.alert("密码填写错误！");
                 slider.reset();
                 return false;
             }
             if (password != password2) {
-                dialog.alert("kata sandi tidak sama");
+                dialog.alert("Kata sandi tidak sama");
                 // dialog.alert("密码不一致！");
                 slider.reset();
                 return false;
@@ -101,7 +101,7 @@
             // }
 
             if (!realname || !(/^[A-Za-z][A-Za-z\s]*[A-Za-z]$/i.test(realname))) {
-                dialog.alert("format nama error");
+                dialog.alert("Format nama error");
                 // dialog.alert("姓名格式错误！");
                 slider.reset();
                 return false;
@@ -194,13 +194,13 @@
                 countdown = getCookieValue("secondsremained");
                 if (isNaN(countdown)) {
                     obj.attr("is_send", '');
-                    obj.text("dapatkan kode verifikasi");
+                    obj.text("Dapatkan kode verifikasi");
                     // obj.text("获取验证码");
                     return;
                 }
                 if (countdown == 0) {
                     obj.attr("is_send", '');
-                    obj.text("dapatkan kode verifikasi");
+                    obj.text("Dapatkan kode verifikasi");
                     // obj.text("获取验证码");
                     return;
                 } else {

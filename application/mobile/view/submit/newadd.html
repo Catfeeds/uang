@@ -6,20 +6,20 @@
     <div class="m-list">
         <ul>
             <li>
-                <label for=""><!-- 新口子名称 -->nama aplikasi baru</label>
-                <input class="name" value="" id="title" placeholder="(wajib)" maxlength="10"><!-- 必填 -->
+                <label for=""><!-- 新口子名称 -->Nama aplikasi baru</label>
+                <input class="name" value="" id="title" placeholder="(Wajib)" maxlength="10"><!-- 必填 -->
             </li>
             <li>
-                <label for=""><!-- 新口子网址 -->situs aplikasi baru</label>
-                <input class="name" value="" id="url" placeholder="(tidak diperlukan)" maxlength="200"><!-- 非必填 -->
+                <label for=""><!-- 新口子网址 -->Situs aplikasi baru</label>
+                <input class="name" value="" id="url" placeholder="(Tidak diperlukan)" maxlength="200"><!-- 非必填 -->
             </li>
         </ul>
     </div>
     <div class="remark textarea-text">
-        <textarea placeholder="disarankan untuk mengisi (tidak wajib)" id="remark"></textarea><!-- 备注(非必填) -->
+        <textarea placeholder="Disarankan untuk mengisi (Tidak wajib)" id="remark"></textarea><!-- 备注(非必填) -->
     </div>
     <div class="s-btn">
-        <button class="submit-now"><!-- 提交 -->kirim</button>
+        <button class="submit-now"><!-- 提交 -->Kirim</button>
     </div>
     <!--<div class="center gray f13">商务合作QQ：860187897</div>-->
 </div>
@@ -38,7 +38,7 @@
             var url = $('#url').val();
             var remark = $('#remark').val();
             if (!title) {
-                dialog.alert("nama wajib");
+                dialog.alert("Nama wajib");
                 // dialog.alert("名称不能为空！");
                 $('#title').focus();
                 return false;

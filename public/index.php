@@ -11,7 +11,9 @@
 
 // [ 应用入口文件 ]
 namespace think;
-
+header('Cache-Control:no-cache,must-revalidate');
+header('Pragma:no-cache');
+header("Expires:0");
 // 加载基础文件
 require __DIR__ . '/../thinkphp/base.php';
 

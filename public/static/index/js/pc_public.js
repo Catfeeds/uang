@@ -163,7 +163,8 @@ $(function () {
                 break;
             case 2:
                 //密码登录
-                if (!mobile || !checkMobile(mobile)) {
+                if (!mobile) {
+                // if (!mobile || !checkMobile(mobile)) {
                     dialog.alert('nomor ponsel error');
                     // dialog.alert('手机号码格式错误！');
                     return false;

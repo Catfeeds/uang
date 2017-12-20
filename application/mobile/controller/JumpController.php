@@ -23,6 +23,6 @@ class JumpController extends Base
             $apply->product_id = $product_id;
         }
         $apply->save();
-        return json(['status'=>1,'msg'=>'ok','url'=>urlencode($product['jump_url'])]);
+        return json(['status'=>1,'msg'=>'ok','url'=>$product['jump_url']]);
    }
 }

@@ -22,13 +22,13 @@ function Jiekuan(id, url, time) {
         jumpurl = "/mobile/jump/topro";
         $.post(jumpurl,{id:id},function(msg){
             if (msg.status == 1 && msg.url) {
-                var ifr = document.createElement('iframe');
-                ifr.src = msg.url;
-                ifr.width = '100%';
-                ifr.height = '700xp';
-                $('#download-page').append(ifr);
-                $('.bd').hide();
-                // window.location.href = msg.url;
+                // var ifr = document.createElement('iframe');
+                // ifr.src = msg.url;
+                // ifr.width = '100%';
+                // ifr.height = '700xp';
+                // $('#download-page').append(ifr);
+                // $('.bd').hide();
+                window.location.href = msg.url;
             }else{
                 
             }

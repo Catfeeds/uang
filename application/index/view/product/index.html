@@ -6,7 +6,7 @@
             <div class="tit"><!-- 借款额度 -->Jumlah Pinjaman</div>
             <ul>
             {volist name="dic['money_limit']" id="vo" key="k"}
-                <li {if ($k-1 == $limit[0])}class="cur"{/if}>
+                <li {if ($k-1 == $limit[0])}class="cur"{/if} style="width: 180px;">
                     <a href="{:substr_replace($limit,$k-1,0,1)}">{$vo}</a>
                 </li>
             {/volist}

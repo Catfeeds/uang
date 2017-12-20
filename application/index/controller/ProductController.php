@@ -37,7 +37,8 @@ class ProductController extends Base
             ->with('tags')
             ->order('id desc')
             // ->paginate(3);
-            ->paginate(30,false,array('type'=>'BootstrapDetailed'));
+            // ->paginate(10,false,array('type'=>'BootstrapDetailed'));
+            ->paginate(10,false,array('type'=>'Bootstrap'));
         foreach ($products as &$v) {
             $v->money_limit = $v['money_min'].'-'.$v['money_max'];
             $v->time_limit = $dic['time_limit'][$v['time_limit']];

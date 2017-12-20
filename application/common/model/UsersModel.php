@@ -13,7 +13,7 @@ class UsersModel extends Model
 	}
 	public function updateStatus(){
 		$this->login_times 	   += 1;
-		$this->last_login_ip 	= get_client_ip(0,true);
+		$this->last_login_ip 	= request()->ip();
 		$this->last_login_time 	= time();
 		return $this->save();
 	}

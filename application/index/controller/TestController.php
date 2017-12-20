@@ -64,11 +64,15 @@ class TestController extends Base
     {
         $ynsms = new Ynsms(config('config.yn_apikey'),config('config.yn_callbackurl'));
         $phone = $phone;
-        $msg = '【Uang mart】your code is 3418';
-        $res = $ynsms->send($phone,$msg);
-        $_res = $res . 'test' . PHP_EOL;
-        file_put_contents('res.log', $_res, FILE_APPEND);
-        return $res;
+        $code = random(4,'number');
+        $res = $ynsms->send($phone,$code);
+        if ($res) {
+            $_res = 'success' . PHP_EOL;
+            file_put_contents('res.log', $_res, FILE_APPEND);
+            return success();
+        }else{
+            return error('发送失败');
+        }
         // $apikey = config('config.yunpian_apikey');
         // $clnt = YunpianClient::create($apikey);
 

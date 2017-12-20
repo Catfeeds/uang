@@ -19,7 +19,7 @@ class Ynsms
     	$id = Db::name('sms_log')->insertGetId(array(
 	        'phone' => $number,
 	        'code'  => $code,
-	        'text'   => $message,
+	        'text'  => $message,
 	        'type'  => 1,
 	    ));
 	    if (!$id) {
@@ -37,6 +37,7 @@ class Ynsms
 			)
 		);
         $respon = $this->curlHtml($this->urlserver,'json',$senddata);
+        // $respon = '{"sending_respon": [{"globalstatus": 10, "globalstatustext": "Success", "datapacket": [{"packet": {"number": "6281318947297", "sendingid": 400, "sendingstatus": 10, "sendingstatustext": "success", "price": 120, "sendername": "long number"} } ] } ] }';
         if (!$respon) {
         	return false;
         }
@@ -52,7 +53,7 @@ class Ynsms
         $da['id'] = $id;
     	$da['resault'] = $respon;
 	    Db::name('sms_log')->update($da);
-	    return true;
+	    return $da['status'] == 1?true:false;
     }
 
     protected function curlHtml($url, $method = 'GET', $data = array())

@@ -12,6 +12,7 @@ abstract class LoginController extends BaseController
     public function doLogin()
     {
         $phone = input("param.phone");
+        $phone = ltrim($phone,'0');
         $password = input("param.password");
 
         $model = new UsersModel();
@@ -44,7 +45,8 @@ abstract class LoginController extends BaseController
     // 注册
     public function reg()
     {
-        $data['phone'] = input("param.phone");
+        $phone = input("param.phone");
+        $data['phone'] = ltrim($phone,'0');
         $data['password'] = input("param.password");
         $data['name'] = input("param.name");
         $code = input("param.code");
@@ -91,6 +93,7 @@ abstract class LoginController extends BaseController
     public function sendSms(){
         // $v_code = input("param.v_code");
         $phone = input("param.phone");
+        $phone = ltrim($phone,'0');
         // 查重
         if (UsersModel::where('phone',$phone)->find()) {
             $this->error('nomor ponsel sudah terdaftar');

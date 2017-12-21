@@ -38,7 +38,7 @@ class AdvertModel extends \app\common\model\AdvertModel
                 return msg(-1, '', $this->getError());
             }else{
 
-                return msg(1, url('advert/index'), '编辑广告成功');
+                return msg(1, url('advert/index'), 'success');
             }
         }catch(\Exception $e){
             return msg(-2, '', $e->getMessage());
@@ -54,7 +54,7 @@ class AdvertModel extends \app\common\model\AdvertModel
         try{
             @unlink(getcwd().$this->img);
             $this->delete();
-            return msg(1, '', '删除广告成功');
+            return msg(1, '', 'success');
 
         }catch(\Exception $e){
             return msg(-1, '', $e->getMessage());

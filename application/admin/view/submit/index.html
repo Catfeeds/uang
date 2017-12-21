@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>提交列表</title>
+    <title>Submit list</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -17,19 +17,19 @@
     <!-- Panel Other -->
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>提交列表</h5>
+            <h5>Submit list</h5>
         </div>
         <div class="ibox-content">
             <div class="form-group clearfix col-sm-1">
                 {if authCheck('submit/cateadd')}
-                <a href="{:url('submit/cateadd')}"><button class="btn btn-outline btn-primary" type="button">添加提交</button></a>
+                <a href="{:url('submit/cateadd')}"><button class="btn btn-outline btn-primary" type="button">add</button></a>
                 {/if}
             </div>
             <!--搜索框开始-->
             <form id='submitForm' role="form" method="post" class="form-inline pull-right">
                 <div class="content clearfix m-b">
                     <div class="form-group">
-                        <label>项目名称：</label>
+                        <label>name：</label>
                         <input type="text" class="form-control" id="searchText" name="searchText">
                     </div>
                     <div class="form-group">
@@ -44,12 +44,12 @@
                 <div class="example">
                     <table id="cusTable">
                         <thead>
-                        <th data-field="id">提交ID</th>
-                        <th data-field="user_name">提交人</th>
-                        <th data-field="name">名称</th>
-                        <th data-field="url">链接</th>
-                        <th data-field="desc">描述内容</th>
-                        <th data-field="operate">操作</th>
+                        <th data-field="id">ID</th>
+                        <th data-field="user_name">submitter</th>
+                        <th data-field="name">name</th>
+                        <th data-field="url">link</th>
+                        <th data-field="desc">content</th>
+                        <th data-field="operate">operation</th>
                         </thead>
                     </table>
                 </div>
@@ -82,10 +82,10 @@
             pageNumber:1, //当前第几页
             pageList: [5, 10, 15, 20, 25],  //记录数可选列表
             sidePagination: "server", //表示服务端请求
-            paginationFirstText: "首页",
-            paginationPreText: "上一页",
-            paginationNextText: "下一页",
-            paginationLastText: "尾页",
+            paginationFirstText: "first",
+            paginationPreText: "<<",
+            paginationNextText: ">>",
+            paginationLastText: "end",
             queryParamsType : "undefined",
             queryParams: function queryParams(params) {   //设置查询参数
                 var param = {
@@ -117,7 +117,7 @@
     });
 
     function submitDel(id){
-        layer.confirm('确认删除此提交?', {icon: 3, title:'提示'}, function(index){
+        layer.confirm('Confirm that you want to delete?', {icon: 3, title:'提示'}, function(index){
             //do something
             $.getJSON("{:url('submit/submitDel')}", {'id' : id}, function(res){
                 if(1 == res.code){
@@ -137,7 +137,7 @@
     }
 
     function handled(id){
-        layer.confirm('此条提交已处理?', {icon: 3, title:'提示'}, function(index){
+        layer.confirm('Confirm that have you been treated?', {icon: 3, title:'提示'}, function(index){
             //do something
             $.getJSON("{:url('submit/handled')}", {'id' : id}, function(res){
                 if(1 == res.code){

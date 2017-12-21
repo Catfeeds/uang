@@ -92,7 +92,7 @@ class NodeModel extends Model
         try{
 
             $this->save($param);
-            return msg(1, '', '添加节点成功');
+            return msg(1, '', 'success');
         }catch(PDOException $e){
 
             return msg(-2, '', $e->getMessage());
@@ -108,7 +108,7 @@ class NodeModel extends Model
         try{
 
             $this->save($param, ['id' => $param['id']]);
-            return msg(1, '', '编辑节点成功');
+            return msg(1, '', 'success');
         }catch(PDOException $e){
 
             return msg(-2, '', $e->getMessage());
@@ -124,7 +124,7 @@ class NodeModel extends Model
         try{
 
             $this->where('id', $id)->delete();
-            return msg(1, '', '删除节点成功');
+            return msg(1, '', 'success');
 
         }catch(PDOException $e){
             return msg(-1, '', $e->getMessage());

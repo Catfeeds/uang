@@ -38,21 +38,21 @@ class LoginController extends Controller
 
         $verify = new Verify();
         if (!$verify->check($code)) {
-            return json(msg(-2, '', '验证码错误'));
+            return json(msg(-2, '', 'Verification code error'));
         }
 
         $userModel = new UserModel();
         $hasUser = $userModel->findUserByName($userName);
         if(empty($hasUser)){
-            return json(msg(-3, '', '管理员不存在'));
+            return json(msg(-3, '', 'The administrator does not exist'));
         }
 
         if(md5($password) != $hasUser['password']){
-            return json(msg(-4, '', '密码错误'));
+            return json(msg(-4, '', 'Password error'));
         }
 
         if(1 != $hasUser['status']){
-            return json(msg(-5, '', '该账号被禁用'));
+            return json(msg(-5, '', 'The account is disable'));
         }
 
         // 获取该管理员的角色信息
@@ -77,7 +77,7 @@ class LoginController extends Controller
         }
 
         // ['code' => 1, 'data' => url('index/index'), 'msg' => '登录成功']
-        return json(msg(1, url('index/index'), '登录成功'));
+        return json(msg(1, url('index/index'), 'Login success'));
     }
 
     // 验证码

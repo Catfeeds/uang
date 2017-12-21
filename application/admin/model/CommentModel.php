@@ -38,7 +38,7 @@ class CommentModel extends \app\common\model\CommentModel
                 return msg(-1, '', $this->getError());
             }else{
 
-                return msg(1, url('category/index'), '编辑分类成功');
+                return msg(1, url('category/index'), 'success');
             }
         }catch(\Exception $e){
             return msg(-2, '', $e->getMessage());
@@ -54,7 +54,7 @@ class CommentModel extends \app\common\model\CommentModel
         try{
 
             $this->where('id', $id)->delete();
-            return msg(1, '', '删除分类成功');
+            return msg(1, '', 'success');
 
         }catch(\Exception $e){
             return msg(-1, '', $e->getMessage());

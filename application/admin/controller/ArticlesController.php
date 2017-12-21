@@ -118,13 +118,13 @@ class ArticlesController extends Base
     private function makeButton($id)
     {
         return [
-            '编辑' => [
+            'edit' => [
                 'auth' => 'articles/articleedit',
                 'href' => url('articles/articleedit', ['id' => $id]),
                 'btnStyle' => 'primary',
                 'icon' => 'fa fa-paste'
             ],
-            '删除' => [
+            'delete' => [
                 'auth' => 'articles/articledel',
                 'href' => "javascript:articleDel(" . $id . ")",
                 'btnStyle' => 'danger',

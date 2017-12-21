@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品列表</title>
+    <title>Product list</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -17,23 +17,23 @@
     <!-- Panel Other -->
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>产品列表</h5>
+            <h5>Product list</h5>
         </div>
         <div class="ibox-content">
             <div class="form-group clearfix col-sm-1">
                 {if authCheck('product/productadd')}
-                <a href="{:url('product/productadd')}"><button class="btn btn-outline btn-primary" type="button">添加产品</button></a>
+                <a href="{:url('product/productadd')}"><button class="btn btn-outline btn-primary" type="button">add</button></a>
                 {/if}
             </div>
             <!--搜索框开始-->
             <form id='commentForm' role="form" method="post" class="form-inline pull-right">
                 <div class="content clearfix m-b">
                     <div class="form-group">
-                        <label>产品名称：</label>
+                        <label>name：</label>
                         <input type="text" class="form-control" id="searchText" name="searchText">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>search</strong>
                         </button>
                     </div>
                 </div>
@@ -44,13 +44,13 @@
                 <div class="example">
                     <table id="cusTable">
                         <thead>
-                        <th data-field="id">产品ID</th>
+                        <th data-field="id">ID</th>
                         <th data-field="logo">logo</th>
-                        <th data-field="name">名称</th>
-                        <th data-field="title">标题</th>
-                        <th data-field="money_rate">日利率</th>
-                        <th data-field="create_at">添加时间</th>
-                        <th data-field="operate">操作</th>
+                        <th data-field="name">name</th>
+                        <th data-field="title">title</th>
+                        <th data-field="money_rate">Daily rate</th>
+                        <th data-field="create_at">add time</th>
+                        <th data-field="operate">operation</th>
                         </thead>
                     </table>
                 </div>
@@ -83,10 +83,10 @@
             pageNumber:1, //当前第几页
             pageList: [5, 10, 15, 20, 25],  //记录数可选列表
             sidePagination: "server", //表示服务端请求
-            paginationFirstText: "首页",
-            paginationPreText: "上一页",
-            paginationNextText: "下一页",
-            paginationLastText: "尾页",
+            paginationFirstText: "first",
+            paginationPreText: "<<",
+            paginationNextText: ">>",
+            paginationLastText: "end",
             queryParamsType : "undefined",
             queryParams: function queryParams(params) {   //设置查询参数
                 var param = {
@@ -118,7 +118,7 @@
     });
 
     function productDel(id){
-        layer.confirm('确认删除此产品?', {icon: 3, title:'提示'}, function(index){
+        layer.confirm('Confirm that you want to delete?', {icon: 3, title:'提示'}, function(index){
             //do something
             $.getJSON("{:url('product/productDel')}", {'id' : id}, function(res){
                 if(1 == res.code){

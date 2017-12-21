@@ -54,9 +54,9 @@ class AdvertController extends Base
             $advert = new AdvertModel();
             $advert->data($param);
             if(!$advert->save()){
-                $this->error('添加失败');
+                $this->error('fail');
             }else{
-                return $this->success('添加成功');
+                return $this->success('success');
             }
         }
         $this->assign('type',$type);
@@ -69,7 +69,7 @@ class AdvertController extends Base
         $id = input('param.id');
         $advert = $advert->get($id);
         if (empty($advert)) {
-            $this->error('广告不存在');
+            $this->error('not found');
         }
         if(request()->isPost()){
             $param = input('post.');
@@ -82,9 +82,9 @@ class AdvertController extends Base
             // }
             $advert->data($param);
             if($advert->save()===false){
-                $this->error('修改失败');
+                $this->error('Failed to modify');
             }else{
-                return $this->success('修改成功',url('@admin/advert/index',"type={$param['type']}"));
+                return $this->success('Successful modification',url('@admin/advert/index',"type={$param['type']}"));
             }
         }
         // dump($advert);die;
@@ -130,13 +130,13 @@ class AdvertController extends Base
     private function makeButton($id)
     {
         return [
-            '编辑' => [
+            'edit' => [
                 'auth' => 'advert/advertedit',
                 'href' => url('advert/advertedit', ['id' => $id]),
                 'btnStyle' => 'primary',
                 'icon' => 'fa fa-paste'
             ],
-            '删除' => [
+            'delete' => [
                 'auth' => 'advert/advertdel',
                 'href' => "javascript:advertDel(" . $id . ")",
                 'btnStyle' => 'danger',

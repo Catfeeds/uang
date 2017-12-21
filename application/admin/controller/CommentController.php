@@ -37,7 +37,7 @@ class CommentController extends Base
         return $this->fetch();
     }
 
-    // 添加分类
+    // 添加评论
     public function commentAdd()
     {
         if(request()->isPost()){
@@ -67,7 +67,7 @@ class CommentController extends Base
         $id = input('param.id');
         $comment = $comment->get($id);
         if (empty($comment)) {
-            $this->error('分类不存在');
+            $this->error('评论不存在');
         }
         if(request()->isPost()){
             $param = input('post.');

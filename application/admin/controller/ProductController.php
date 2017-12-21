@@ -65,7 +65,7 @@ class ProductController extends Base
                 $product->data($param);
                 if(!$product->save()){
                     Db::rollback();
-                    $this->error('添加失败');
+                    $this->error('Add failure');
                 }
                 // tags 处理
                 if (!empty($param['tags'])) {
@@ -75,11 +75,11 @@ class ProductController extends Base
                 $this->createQr($product->id);
                 // 提交事务
                 Db::commit();
-                return $this->success('添加成功');
+                return $this->success('Add success');
             } catch (\Exception $e) {
                 // 回滚事务
                 Db::rollback();
-                $this->error('添加失败');
+                $this->error('Add failure');
             }
         }else{
             $this->assign(config('dic.'));
@@ -94,7 +94,7 @@ class ProductController extends Base
         $id = input('param.id');
         $product = $product->get($id);
         if (empty($product)) {
-            $this->error('产品不存在');
+            $this->error('not found');
         }
         if(request()->isPost()){
             $param = input('post.');
@@ -117,7 +117,7 @@ class ProductController extends Base
                 $product->data($param);
                 if($product->save()===false){
                     Db::rollback();
-                    $this->error('修改失败');
+                    $this->error('Failure to modify');
                 }
                 // tags 处理
                 $product->editTags($param['tags']);
@@ -126,11 +126,11 @@ class ProductController extends Base
                 $this->createQr($product->id);
                 // 提交事务
                 Db::commit();
-                return $this->success('修改成功',url('product/index'));
+                return $this->success('Successful modification',url('product/index'));
             } catch (\Exception $e) {
                 // 回滚事务
                 Db::rollback();
-                $this->error('修改失败');
+                $this->error('Failure to modify');
             }
         }
 
@@ -209,7 +209,7 @@ class ProductController extends Base
     private function makeButton($id)
     {
         return [
-            '编辑' => [
+            'edit' => [
                 'auth' => 'product/productedit',
                 'href' => url('product/productedit', ['id' => $id]),
                 'btnStyle' => 'primary',

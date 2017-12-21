@@ -38,7 +38,7 @@ class ProductModel extends \app\common\model\ProductModel
                 return msg(-1, '', $this->getError());
             }else{
 
-                return msg(1, url('product/index'), '编辑产品成功');
+                return msg(1, url('product/index'), 'success');
             }
         }catch(\Exception $e){
             return msg(-2, '', $e->getMessage());
@@ -69,7 +69,7 @@ class ProductModel extends \app\common\model\ProductModel
         try{
 
             $this->where('id', $id)->delete();
-            return msg(1, '', '删除产品成功');
+            return msg(1, '', 'success');
 
         }catch(\Exception $e){
             return msg(-1, '', $e->getMessage());

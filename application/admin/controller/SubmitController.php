@@ -34,7 +34,7 @@ class SubmitController extends Base
         return $this->fetch();
     }
 
-    // 添加分类
+    // 添加口子
     public function submitAdd()
     {
         if(request()->isPost()){
@@ -64,7 +64,7 @@ class SubmitController extends Base
         $id = input('param.id');
         $submit = $submit->get($id);
         if (empty($submit)) {
-            $this->error('分类不存在');
+            $this->error('口子不存在');
         }
         if(request()->isPost()){
             $param = input('post.');
